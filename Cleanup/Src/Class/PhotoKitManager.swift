@@ -174,6 +174,7 @@ class PhotoKitManager {
             }
         }
         
+        
         return imageDistance
     }
     
