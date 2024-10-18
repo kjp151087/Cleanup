@@ -10,15 +10,27 @@ import Photos
 
 struct AssetImageView: View {
     var asset: PHAsset
+    var shouldLoadOrigin: Bool = false
+    var shouldReleaseOnDisapper: Bool = false
+    var indexOfList: Int = -1
+    
+    @State private var isVisiable = false
     
     @State private var image: UIImage? = nil
     
     var body: some View {
-        Group {
+        VStack {
             if let image = image {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFill()
+                if (shouldLoadOrigin){
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                }
+                else {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                }
             } else {
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
@@ -27,18 +39,32 @@ struct AssetImageView: View {
                     }
             }
         }
+        .onAppear {
+            print("on    appear \(indexOfList) \(shouldLoadOrigin) \(shouldReleaseOnDisapper)")
+            self.isVisiable = true
+        }
+        .onDisappear {
+            print("on disappear \(indexOfList) \(shouldLoadOrigin) \(shouldReleaseOnDisapper)")
+            if (shouldReleaseOnDisapper) {
+                print("on disappear releasing image \(indexOfList)")
+                image = nil
+            }
+            self.isVisiable = false
+        }
     }
     
     private func loadAssetImage() {
-        let manager = PHImageManager.default()
-        let options = PHImageRequestOptions()
-        options.isSynchronous = false
-        options.deliveryMode = .highQualityFormat
-        manager.requestImage(for: asset,
-                             targetSize: CGSize(width: 80, height: 80),
-                             contentMode: .aspectFill,
-                             options: options) { image, _ in
-            self.image = image
+        let delay : DispatchTime = shouldReleaseOnDisapper ? (.now() + 1) : .now()
+        DispatchQueue.global().asyncAfter(deadline: delay){
+            var image = asset.getMedumThumgImage()
+            if (shouldLoadOrigin) {
+                image = asset.getLargeImage()
+            }
+            DispatchQueue.main.async {
+                if (isVisiable){
+                    self.image = image
+                }
+            }
         }
     }
 }

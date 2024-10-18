@@ -8,18 +8,35 @@
 import Foundation
 import PhotosUI
 import Vision
+import Combine
 
 
-class PhotoKitManager {
+class PhotoKitManager : ObservableObject {
     
+    var testing = true
     
     static var shared = PhotoKitManager()
     
     var status : PHAuthorizationStatus = .notDetermined
-    
     var photosList : [PHAsset] = []
-    var similarPhotosList : [GridModel] = []
     var videosList : [PHAsset] = []
+    var similarPhotosList : [GridModel] = []
+    
+    var isScaning = false
+    var scanningProgress : Float = 0
+    
+    var isAccessGranted :Bool {
+        switch self.status {
+        case .authorized, .limited:
+            return true
+        case .denied, .restricted, .notDetermined:
+            print("Access to photo library is not allowed.")
+            return false
+        @unknown default:
+            print("Unknown photo library permission status.")
+            return false
+        }
+    }
     
     private init() {
         status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
@@ -79,11 +96,17 @@ class PhotoKitManager {
         
         return fetchedPhotos
     }
+    
+    func totalSizeOnDisk(assets : [PHAsset]) -> Float{
+        return assets.reduce(0) { result, item in
+           result + item.assetSize()
+       }
+    }
 
     
     func filterSimilarPhotos(updateList: @escaping ([GridModel],Bool) -> Void)  {
         
-        var fetchedPhotos: [GridModel] = []
+//        var fetchedPhotos: [GridModel] = []
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
@@ -96,7 +119,11 @@ class PhotoKitManager {
         
         let startTime = Date()
         print("assets.count ",assets.count)
-        for i in 1..<assets.count {
+        
+        var countLegnth = testing ? 50 : assets.count
+        isScaning = true
+        for i in 1..<countLegnth {
+            scanningProgress = Float(i) / Float(countLegnth)
             autoreleasepool {
                  
                 let image1 = assets[i-1].getThumgImage() ?? UIImage(named: "test")!
@@ -108,14 +135,14 @@ class PhotoKitManager {
                 let widthDelta = abs(image1.size.width - image2.size.width)
                 let heightDelta = abs(image1.size.height - image2.size.height)
                 
-                print("distance -> \(distance) between \(i-1)-\(i)")
+//                print("distance -> \(distance) between \(i-1)-\(i)")
                 
                 if ((distance < 0.50 && deltaTime < 15) && (widthDelta < 10 && heightDelta < 10)) {
                     imageList.append(ImageModel(index:imageList.count, asset: assets[i], image: nil, difValue: distance, deltaTime: Float(deltaTime)))
                 }
                 else{
                     if(imageList.count > 1){
-                        fetchedPhotos.append(GridModel(index: mainIndex, images: imageList))
+                        similarPhotosList.append(GridModel(index: mainIndex, images: imageList))
                         mainIndex += 1
                     }
                     imageList = []
@@ -124,18 +151,18 @@ class PhotoKitManager {
                 }
                 
                 if (i % 25 == 0) {
-                    updateList(fetchedPhotos,false)
+                    updateList(similarPhotosList,false)
                 }
                 
-//                print("Distance \(i) \(distance) - \(widthDelta) - \(heightDelta)")
+                print("Distance \(i) \(scanningProgress) \(distance) - \(widthDelta) - \(heightDelta) ")
             }
         }
         
         let endTime = Date()
-        
+        isScaning = false
         let times = endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970
         print("times \(times)")
-        updateList(fetchedPhotos,true)
+        updateList(similarPhotosList,true)
         
     }
     

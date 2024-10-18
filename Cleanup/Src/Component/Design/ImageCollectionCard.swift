@@ -6,23 +6,23 @@
 //
 
 import SwiftUI
+import Photos
 
 struct ImageCard : View {
-    let imageObject : ImageModel
+    let imageObject : PHAsset
     @State var image = UIImage(named: "test")!
     
     var body: some View{
         VStack{
             Image(uiImage:image)
                 .resizable()
-                .scaledToFit()
-                .frame(width: 100, height: 100)
+                .scaledToFill()
                 .cornerRadius(10)
-            
         }
+        .background(.red)
         .onAppear {
             Utility.performAsync(delay: 0.1) {
-                image = imageObject.asset?.getThumgImage() ?? UIImage(named: "test")!
+                image = imageObject.getThumgImage() ?? UIImage(named: "test")!
             }
             
         }
@@ -38,15 +38,19 @@ struct ImageCollectionCard: View {
     var body: some View {
         VStack{
             HStack{
-                Text("\(imageInfo.images.count) Similar  : \(imageInfo.totalSize()) MB")
+//                Text("\(imageInfo.images.count) Similar  : \(imageInfo.totalSize()) MB")
+                Text("\(imageInfo.images.count) Similar")
                 Spacer()
             }
             ScrollView(.horizontal){
                 LazyHStack {
                     ForEach(imageInfo.images, id: \.id) { item in
                         VStack{
-                            
-                            ImageCard(imageObject: item)
+                            if let asset = item.asset {
+                                AssetImageView(asset: asset)
+                                    .frame(width: 120, height: 120)
+                                    .cornerRadius(8)
+                            }
                             Text("DP: \(String(format: "%0.2f", item.deltaImageProcess))")
                             Text("DT: \(String(format: "%0.2f", item.deltaImageTime))")
                             Text("FileSize: \(String(format: "%0.2f", item.asset?.assetSize() ?? 0))")

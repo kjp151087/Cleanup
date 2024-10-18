@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct CleanupApp: App {
+    
+    @StateObject var photoManager = PhotoKitManager.shared
+
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(photoManager)
+
         }
     }
 }

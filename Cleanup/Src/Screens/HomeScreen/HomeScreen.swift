@@ -10,6 +10,9 @@ import SwiftUI
 struct HomeScreen: View {
     
     @StateObject var vm = HomeScreenViewModel()
+    @Environment(\.router) var router
+    @EnvironmentObject var photoManager: PhotoKitManager
+
 
     var body: some View {
         VStack {
@@ -23,15 +26,34 @@ struct HomeScreen: View {
                     }
                 }
                 
+                Button{
+                    router.showScreen(.push) { r in
+                        SimilarPhotoScreen()
+                    }
+                }label: {
+                    Text("Show Similar Photos")
+                }
+                
+                if (photoManager.isScaning) {
+                    ProgressView("Scaning Photos/Videos(\(String(format: "%0.2f", vm.progress * 100)))", value: vm.progress, total: 1.0)
+                        .padding()
+                }
+                
                 VStack{
-                    HomeScreenCard(cardTitle: "Photos",lists: vm.photos)
+                    Button {
+                        router.showScreen(.push) { r in
+                            PhotoScreen()
+                        }
+                    } label: {
+                        HomeScreenCard(cardTitle: "Photos",lists: vm.photos)
+                    }
+
                     HomeScreenCard(cardTitle: "Videos",lists: vm.videos)
                     HomeScreenCard(cardTitle: "Live Photos",lists: vm.livePhotos)
                     HomeScreenCard(cardTitle: "Screen shots",lists: vm.screenshots)
                 }
             }
         }
-        .padding()
         .onLoad {
             vm.requestPermission()
         }

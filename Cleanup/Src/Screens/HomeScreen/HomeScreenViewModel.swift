@@ -21,15 +21,15 @@ struct GridModel : Identifiable {
         self.index = index
     }
     
-    func totalSize() -> Float {
-        var total  :Float = 0.0
-        
-        for item in images {
-            total += item.asset?.assetSize() ?? 0.0
-        }
-        
-        return total;
-    }
+//    func totalSize() -> Float {
+//        var total  :Float = 0.0
+//        
+//        for item in images {
+//            total += item.asset?.assetSize() ?? 0.0
+//        }
+//        
+//        return total;
+//    }
 }
 
 
@@ -55,13 +55,15 @@ struct ImageModel : Identifiable {
 
 class HomeScreenViewModel : ObservableObject {
     
-    @Published var fetchedPhotos: [GridModel] = []
+//    @Published var fetchedPhotos: [GridModel] = []
     @Published var photos: [PHAsset] = []
     @Published var videos: [PHAsset] = []
     @Published var livePhotos: [PHAsset] = []
     @Published var screenshots: [PHAsset] = []
-    @Published var isScaning = false
     @Published var chartData: [ChartInfo] = []
+    
+    
+    @Published var progress: Float = 0
     
     func requestPermission() {
         let status = PhotoKitManager.shared.status
@@ -84,20 +86,67 @@ class HomeScreenViewModel : ObservableObject {
         livePhotos = PhotoKitManager.shared.fetchAsset(for: .image, subType: .photoLive)
         screenshots = PhotoKitManager.shared.fetchAsset(for: .image, subType: .photoScreenshot)
         
-        chartData = [
-            ChartInfo(value: Double(photos.count), color: .blue, text: "Photos"),
-            ChartInfo(value: Double(videos.count), color: .green, text: "Videos"),
-            ChartInfo(value: Double(livePhotos.count), color: .orange, text: "Live Photos"),
-            ChartInfo(value: Double(screenshots.count), color: .purple, text: "Screen Shots"),
-        ]
         
         PhotoKitManager.shared.requestPermission { isGranted in
-            self.isScaning = true
             PhotoKitManager.shared.filterSimilarPhotos { newList, isAllImageProcess in
-                self.fetchedPhotos = newList
-                self.isScaning = !isAllImageProcess
+                self.progress = PhotoKitManager.shared.scanningProgress
+//                self.fetchedPhotos = newList
             }
         }
+        
+        Utility.performAsync(delay: 1) { [weak self] in
+//            self?.countSizeOnDisk()
+        }
+    }
+    
+    func countSizeOnDisk() {
+        
+        
+        DispatchQueue.global().async {
+            
+            var data : [ChartInfo] = []
+            
+            
+            let videosSize = Double(PhotoKitManager.shared.totalSizeOnDisk(assets: self.videos))
+            data.append(ChartInfo(value: videosSize, color: .green, text: "Videos\n\(Utility.formatDiskSize(size: videosSize))"))
+            
+            DispatchQueue.main.async {
+                self.chartData = data
+            }
+            
+            
+            let photosSize = Double(PhotoKitManager.shared.totalSizeOnDisk(assets: self.photos))
+            data.append(ChartInfo(value: photosSize, color: .blue, text: "Photos\n\(Utility.formatDiskSize(size: photosSize))"))
+            
+            DispatchQueue.main.async {
+                self.chartData = data
+            }
+            
+            let livePhotoSize = Double(PhotoKitManager.shared.totalSizeOnDisk(assets: self.livePhotos))
+            data.append(ChartInfo(value: livePhotoSize, color: .orange, text: "Live Photos\n\(Utility.formatDiskSize(size: livePhotoSize))"))
+            
+            DispatchQueue.main.async {
+                self.chartData = data
+            }
+            
+            
+            let screenShotSize = Double(PhotoKitManager.shared.totalSizeOnDisk(assets: self.screenshots))
+            data.append(ChartInfo(value: screenShotSize, color: .purple, text: "Screen Shots\n\(Utility.formatDiskSize(size: screenShotSize))"))
+        
+            
+            DispatchQueue.main.async {
+                self.chartData = data
+            }
+//
+//            let data = [
+//                ChartInfo(value: photosSize, color: .blue, text: "Photos\n\(photosSize) MB"),
+//                ChartInfo(value: videosSize, color: .green, text: "Videos"),
+//                ChartInfo(value: livePhotoSize, color: .orange, text: "Live Photos"),
+//                ChartInfo(value: screenShotSize, color: .purple, text: "Screen Shots"),
+//            ]
+            
+        }
+        
     }
     
 }

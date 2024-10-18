@@ -8,9 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		F92F71CB2CA842FB00185B39 /* ImageCollectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92F71CA2CA842FB00185B39 /* ImageCollectionCard.swift */; };
+		F95FE6362CBFD52700BE8E4D /* PhotoFullScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */; };
+		F95FE6382CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */; };
+		F95FE63A2CBFD8AB00BE8E4D /* PhotoAssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6392CBFD8AB00BE8E4D /* PhotoAssetModel.swift */; };
 		F99227F02CB8183F0066D70C /* AssetImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99227EF2CB8183F0066D70C /* AssetImageView.swift */; };
 		F99227F32CB83A6F0066D70C /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99227F22CB83A6F0066D70C /* PieChartView.swift */; };
 		F997465A2CB0270100D3C75D /* HomeScreenCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99746592CB0270100D3C75D /* HomeScreenCard.swift */; };
+		F99B084A2CBC2FD7001A79DD /* PhotoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B08492CBC2FD7001A79DD /* PhotoScreen.swift */; };
+		F99B084D2CBC2FEB001A79DD /* PhotoScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B084C2CBC2FEB001A79DD /* PhotoScreenViewModel.swift */; };
 		F9C72F3D2CA5BC54006F58E6 /* CleanupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F3C2CA5BC54006F58E6 /* CleanupApp.swift */; };
 		F9C72F3F2CA5BC54006F58E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F3E2CA5BC54006F58E6 /* ContentView.swift */; };
 		F9C72F412CA5BC56006F58E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9C72F402CA5BC56006F58E6 /* Assets.xcassets */; };
@@ -46,9 +51,14 @@
 
 /* Begin PBXFileReference section */
 		F92F71CA2CA842FB00185B39 /* ImageCollectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionCard.swift; sourceTree = "<group>"; };
+		F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullScreen.swift; sourceTree = "<group>"; };
+		F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullScreenViewModel.swift; sourceTree = "<group>"; };
+		F95FE6392CBFD8AB00BE8E4D /* PhotoAssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAssetModel.swift; sourceTree = "<group>"; };
 		F99227EF2CB8183F0066D70C /* AssetImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetImageView.swift; sourceTree = "<group>"; };
 		F99227F22CB83A6F0066D70C /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		F99746592CB0270100D3C75D /* HomeScreenCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCard.swift; sourceTree = "<group>"; };
+		F99B08492CBC2FD7001A79DD /* PhotoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoScreen.swift; sourceTree = "<group>"; };
+		F99B084C2CBC2FEB001A79DD /* PhotoScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoScreenViewModel.swift; sourceTree = "<group>"; };
 		F9C72F392CA5BC54006F58E6 /* Cleanup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cleanup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9C72F3C2CA5BC54006F58E6 /* CleanupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanupApp.swift; sourceTree = "<group>"; };
 		F9C72F3E2CA5BC54006F58E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,12 +105,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F95FE6342CBFD50F00BE8E4D /* PhotoFullScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */,
+				F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */,
+			);
+			path = PhotoFullScreen;
+			sourceTree = "<group>";
+		};
 		F99227F12CB83A590066D70C /* SupportUIComponent */ = {
 			isa = PBXGroup;
 			children = (
 				F99227F22CB83A6F0066D70C /* PieChartView.swift */,
 			);
 			path = SupportUIComponent;
+			sourceTree = "<group>";
+		};
+		F99B08482CBC2FCC001A79DD /* PhotoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F99B08492CBC2FD7001A79DD /* PhotoScreen.swift */,
+				F99B084C2CBC2FEB001A79DD /* PhotoScreenViewModel.swift */,
+			);
+			path = PhotoScreen;
 			sourceTree = "<group>";
 		};
 		F9C72F302CA5BC54006F58E6 = {
@@ -232,6 +260,8 @@
 		F9C72F6E2CA5BC9F006F58E6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F95FE6342CBFD50F00BE8E4D /* PhotoFullScreen */,
+				F99B08482CBC2FCC001A79DD /* PhotoScreen */,
 				F9D9DC072CADA242006CA6C6 /* HomeScreen */,
 				F9D9DC0C2CADA25D006CA6C6 /* SimilarPhotoScreen */,
 			);
@@ -251,6 +281,7 @@
 		F9C72F942CA5BC9F006F58E6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F95FE6392CBFD8AB00BE8E4D /* PhotoAssetModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,11 +397,14 @@
 				F997465A2CB0270100D3C75D /* HomeScreenCard.swift in Sources */,
 				F9C72FD22CA5BC9F006F58E6 /* Utility.swift in Sources */,
 				F9D9DC0A2CADA242006CA6C6 /* HomeScreen.swift in Sources */,
+				F99B084D2CBC2FEB001A79DD /* PhotoScreenViewModel.swift in Sources */,
 				F9C72FA52CA5BC9F006F58E6 /* DateExtension.swift in Sources */,
 				F9C72FAF2CA5BC9F006F58E6 /* RootAppScreen.swift in Sources */,
+				F95FE6362CBFD52700BE8E4D /* PhotoFullScreen.swift in Sources */,
 				F9C72FB32CA5BC9F006F58E6 /* ToastView.swift in Sources */,
 				F9C72FD12CA5BC9F006F58E6 /* AppConstant.swift in Sources */,
 				F9C72FAE2CA5BC9F006F58E6 /* AttributedText.swift in Sources */,
+				F99B084A2CBC2FD7001A79DD /* PhotoScreen.swift in Sources */,
 				F9C72FB82CA5BC9F006F58E6 /* SeparatorLine.swift in Sources */,
 				F99227F02CB8183F0066D70C /* AssetImageView.swift in Sources */,
 				F9C72FB42CA5BC9F006F58E6 /* BadgeCountButton.swift in Sources */,
@@ -384,7 +418,9 @@
 				F99227F32CB83A6F0066D70C /* PieChartView.swift in Sources */,
 				F9C72FA02CA5BC9F006F58E6 /* EncodableExtension.swift in Sources */,
 				F9C72FA32CA5BC9F006F58E6 /* NSAttributedStringExtension.swift in Sources */,
+				F95FE6382CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift in Sources */,
 				F9C72FD32CA5BC9F006F58E6 /* Color.swift in Sources */,
+				F95FE63A2CBFD8AB00BE8E4D /* PhotoAssetModel.swift in Sources */,
 				F9C72FAD2CA5BC9F006F58E6 /* ViewOnLoadModifier.swift in Sources */,
 				F9C72FB22CA5BC9F006F58E6 /* RootNavScreen.swift in Sources */,
 				F9C72FA12CA5BC9F006F58E6 /* UserDefaultExtension.swift in Sources */,
@@ -531,8 +567,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -564,8 +600,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

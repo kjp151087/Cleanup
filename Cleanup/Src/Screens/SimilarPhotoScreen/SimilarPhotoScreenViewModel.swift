@@ -10,18 +10,16 @@ import Foundation
 
 class SimilarPhotoScreenViewModel : ObservableObject {
     
-    @Published var fetchedPhotos: [GridModel] = []
-    @Published var isScaning = false
+    @Published var similarPhotos: [GridModel] = []
     
     func fetchPhotos() {
-        
         print("fetchPhotos")
-        PhotoKitManager.shared.requestPermission { isGranted in
-            self.isScaning = true
-            PhotoKitManager.shared.filterSimilarPhotos { newList, isAllImageProcess in
-                print("newList",newList.count)
-                self.fetchedPhotos = newList
-                self.isScaning = !isAllImageProcess
+        if (PhotoKitManager.shared.isAccessGranted) {
+            self.similarPhotos = PhotoKitManager.shared.similarPhotosList
+            if (PhotoKitManager.shared.isScaning) {
+                Utility.performAsync(delay: 0.5) { [weak self] in
+                    self?.fetchPhotos()
+                }
             }
         }
     }

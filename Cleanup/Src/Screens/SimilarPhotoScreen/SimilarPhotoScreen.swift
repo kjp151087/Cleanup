@@ -14,7 +14,7 @@ struct SimilarPhotoScreen: View {
         VStack {
             ScrollView {
                 LazyVStack {
-                    ForEach(vm.fetchedPhotos, id: \.id) { item in
+                    ForEach(vm.similarPhotos, id: \.id) { item in
                         VStack{
                             ImageCollectionCard(imageInfo: item)
                             Divider()

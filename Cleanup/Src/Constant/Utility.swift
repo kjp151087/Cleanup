@@ -56,6 +56,13 @@ class Utility {
         let stringIsValid = numbersOnly.isSuperset(of: characterSetFromTextField)
         return stringIsValid
     }
+    
+    static func formatDiskSize(size : Double) -> String {
+        if (size > 1000) {
+            return String(format: "%.2f GB", (size/1000.0))
+        }
+        return String(format: "%.2f MB", size)
+    }
 
 
 }
