@@ -15,8 +15,14 @@ class PhotoFullScreenViewModel : ObservableObject {
     @Published var currentImage: UIImage?
     var index : Int
     
-    init(index : Int) {
-        self.photos = PhotoKitManager.shared.fetchAsset(for: .image)
+//    init(index : Int) {
+//        self.photos = PhotoKitManager.shared.fetchAsset(for: .image)
+//        self.index = index
+//        self.currentImage = photos[index].getLargeImage()
+//    }
+    
+    init(index : Int, assetList : [PHAsset]?) {
+        self.photos = assetList ?? PhotoKitManager.shared.fetchAsset(for: .image)
         self.index = index
         self.currentImage = photos[index].getLargeImage()
     }

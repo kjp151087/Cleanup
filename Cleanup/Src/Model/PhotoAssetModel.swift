@@ -10,5 +10,11 @@ import Photos
 import UIKit
 
 class PhotoAssetModel : PHAsset {
-    var loadedThumg : UIImage?
+    var selected : Bool = false
+    var asset : PHAsset
+    
+    init(asset: PHAsset) {
+        self.selected = false
+        self.asset = asset
+    }
 }

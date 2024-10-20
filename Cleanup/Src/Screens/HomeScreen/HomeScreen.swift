@@ -42,7 +42,7 @@ struct HomeScreen: View {
                 VStack{
                     Button {
                         router.showScreen(.push) { r in
-                            PhotoScreen()
+                            PhotoScreen(assetList: vm.photos)
                         }
                     } label: {
                         HomeScreenCard(cardTitle: "Photos",lists: vm.photos)
@@ -50,10 +50,16 @@ struct HomeScreen: View {
 
                     HomeScreenCard(cardTitle: "Videos",lists: vm.videos)
                     HomeScreenCard(cardTitle: "Live Photos",lists: vm.livePhotos)
-                    HomeScreenCard(cardTitle: "Screen shots",lists: vm.screenshots)
+                    HomeScreenCard(cardTitle: "Screen Shots",lists: vm.screenshots)
+                    HomeScreenCard(cardTitle: "Deleted Photos",lists: vm.deletedPhotos)
                 }
             }
         }
+        .onAppear(perform: {
+            if (PhotoKitManager.shared.isAccessGranted){
+                vm.deletedPhotos = PhotoKitManager.shared.deletedPhotoList
+            }
+        })
         .onLoad {
             vm.requestPermission()
         }

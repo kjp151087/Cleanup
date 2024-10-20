@@ -20,6 +20,7 @@ class PhotoKitManager : ObservableObject {
     var status : PHAuthorizationStatus = .notDetermined
     var photosList : [PHAsset] = []
     var videosList : [PHAsset] = []
+    var deletedPhotoList : [PHAsset] = []
     var similarPhotosList : [GridModel] = []
     
     var isScaning = false
@@ -120,7 +121,7 @@ class PhotoKitManager : ObservableObject {
         let startTime = Date()
         print("assets.count ",assets.count)
         
-        var countLegnth = testing ? 50 : assets.count
+        var countLegnth = testing ? 350 : assets.count
         isScaning = true
         for i in 1..<countLegnth {
             scanningProgress = Float(i) / Float(countLegnth)
@@ -154,7 +155,7 @@ class PhotoKitManager : ObservableObject {
                     updateList(similarPhotosList,false)
                 }
                 
-                print("Distance \(i) \(scanningProgress) \(distance) - \(widthDelta) - \(heightDelta) ")
+//                print("Distance \(i) \(scanningProgress) \(distance) - \(widthDelta) - \(heightDelta) ")
             }
         }
         
@@ -186,7 +187,7 @@ class PhotoKitManager : ObservableObject {
         
     }
     
-    func compareImage(image1 : UIImage, image2 : UIImage) -> Float {
+    private func compareImage(image1 : UIImage, image2 : UIImage) -> Float {
         
         var imageDistance: Float = .infinity
         
@@ -203,6 +204,10 @@ class PhotoKitManager : ObservableObject {
         
         
         return imageDistance
+    }
+    
+    func deleteAsset(asset : PHAsset) {
+        deletedPhotoList.append(asset)
     }
     
 }

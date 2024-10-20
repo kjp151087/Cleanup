@@ -9,48 +9,10 @@ import Foundation
 import UIKit
 import PhotosUI
 
-struct GridModel : Identifiable {
-    
-    var id = UUID() // Unique identifier
-
-    var images : [ImageModel]
-    var index : Int
-    
-    init(index : Int, images: [ImageModel]) {
-        self.images = images
-        self.index = index
-    }
-    
-//    func totalSize() -> Float {
-//        var total  :Float = 0.0
-//        
-//        for item in images {
-//            total += item.asset?.assetSize() ?? 0.0
-//        }
-//        
-//        return total;
-//    }
-}
 
 
-struct ImageModel : Identifiable {
-    
-    var id = UUID() // Unique identifier
-    var index : Int
 
-    var asset : PHAsset?
-    var image : UIImage?
-    var deltaImageProcess : Float
-    var deltaImageTime : Float
-    
-    init(index: Int, asset : PHAsset?, image: UIImage?, difValue : Float, deltaTime : Float) {
-        self.image = image
-        self.index = index
-        self.asset = asset
-        self.deltaImageProcess = difValue
-        self.deltaImageTime = deltaTime
-    }
-}
+
 
 
 class HomeScreenViewModel : ObservableObject {
@@ -60,6 +22,8 @@ class HomeScreenViewModel : ObservableObject {
     @Published var videos: [PHAsset] = []
     @Published var livePhotos: [PHAsset] = []
     @Published var screenshots: [PHAsset] = []
+    @Published var deletedPhotos: [PHAsset] = []
+    
     @Published var chartData: [ChartInfo] = []
     
     
@@ -85,7 +49,7 @@ class HomeScreenViewModel : ObservableObject {
         videos = PhotoKitManager.shared.fetchAsset(for: .video)
         livePhotos = PhotoKitManager.shared.fetchAsset(for: .image, subType: .photoLive)
         screenshots = PhotoKitManager.shared.fetchAsset(for: .image, subType: .photoScreenshot)
-        
+        deletedPhotos = PhotoKitManager.shared.deletedPhotoList
         
         PhotoKitManager.shared.requestPermission { isGranted in
             PhotoKitManager.shared.filterSimilarPhotos { newList, isAllImageProcess in

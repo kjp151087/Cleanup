@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F91EDB532CC40CF800C0102B /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91EDB522CC40CF800C0102B /* ImageModel.swift */; };
+		F91EDB552CC40D3800C0102B /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91EDB542CC40D3800C0102B /* GridModel.swift */; };
 		F92F71CB2CA842FB00185B39 /* ImageCollectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92F71CA2CA842FB00185B39 /* ImageCollectionCard.swift */; };
 		F95FE6362CBFD52700BE8E4D /* PhotoFullScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */; };
 		F95FE6382CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F91EDB522CC40CF800C0102B /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		F91EDB542CC40D3800C0102B /* GridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridModel.swift; sourceTree = "<group>"; };
 		F92F71CA2CA842FB00185B39 /* ImageCollectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionCard.swift; sourceTree = "<group>"; };
 		F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullScreen.swift; sourceTree = "<group>"; };
 		F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullScreenViewModel.swift; sourceTree = "<group>"; };
@@ -282,6 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				F95FE6392CBFD8AB00BE8E4D /* PhotoAssetModel.swift */,
+				F91EDB522CC40CF800C0102B /* ImageModel.swift */,
+				F91EDB542CC40D3800C0102B /* GridModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 				F9C72F3F2CA5BC54006F58E6 /* ContentView.swift in Sources */,
 				F9C72FB72CA5BC9F006F58E6 /* TextButton.swift in Sources */,
 				F9C72FB62CA5BC9F006F58E6 /* BaseTextField.swift in Sources */,
+				F91EDB552CC40D3800C0102B /* GridModel.swift in Sources */,
 				F9D9DC0B2CADA242006CA6C6 /* HomeScreenViewModel.swift in Sources */,
 				F99227F32CB83A6F0066D70C /* PieChartView.swift in Sources */,
 				F9C72FA02CA5BC9F006F58E6 /* EncodableExtension.swift in Sources */,
@@ -425,6 +432,7 @@
 				F9C72FB22CA5BC9F006F58E6 /* RootNavScreen.swift in Sources */,
 				F9C72FA12CA5BC9F006F58E6 /* UserDefaultExtension.swift in Sources */,
 				F9C72F3D2CA5BC54006F58E6 /* CleanupApp.swift in Sources */,
+				F91EDB532CC40CF800C0102B /* ImageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

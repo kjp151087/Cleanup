@@ -1,123 +1,64 @@
 import SwiftUI
+import Photos
 
 struct PhotoFullScreen: View {
     
     @StateObject var vm: PhotoFullScreenViewModel
     
-    init(currentIndex: Int) {
-        _vm = StateObject(wrappedValue: PhotoFullScreenViewModel(index: currentIndex))
+    init(currentIndex: Int, assetList : [PHAsset]? = nil) {
+        _vm = StateObject(wrappedValue: PhotoFullScreenViewModel(index: currentIndex, assetList: assetList))
     }
-    
-    /*
-    var body: some View {
-        ZStack {
-            // Main full-screen image display
-//            TabView(selection: $vm.index) { // Bind current index to the TabView
-//                ForEach(vm.photos.indices, id: \.self) { index in
-//                    let asset = vm.photos[index]
-//                    AssetImageView(asset: asset, shouldLoadOrigin: true, shouldReleaseOnDisapper: true, indexOfList: index)
-//                        .tag(index) // Tag each page with its index
-//                        .padding()
-//
-//                }
-//            }
-//            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Use PageTabViewStyle for paging
-//            .frame(maxWidth: .infinity, maxHeight: .infinity) // Make it full-screen
-//            AssetImageView(asset: vm.getCurrentIndexAsset(),
-//                           shouldLoadOrigin: true,
-//                           shouldReleaseOnDisapper: true,
-//                           indexOfList: vm.index)
-            
-            
-            VStack{
-                Image(uiImage: vm.currentImage ?? UIImage(named: "test")!)
-                    .resizable()
-                    .scaledToFit()
-                    .padding()
-            }
-            .background(Color.gray.opacity(0.4))
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
-            VStack{
-                Spacer()
-                HStack{
-                    Button {
-                        
-                    } label: {
-                        Text("DELETE")
-                    }
-                    Spacer()
-                    Button {
-                        vm.updateToNextIndex()
-                    } label: {
-                        Text("KEEP")
-                    }
-                    
-                }
-                .padding()
-                .frame(height: 60)
-            }
-            
-            
-            // Lazy HStack for thumbnails at the bottom
-            // As of now No need to show bottom thumbnail
-//            VStack {
-//                Spacer() // Push the thumbnails to the bottom
-//                ScrollView(.horizontal, showsIndicators: false) {
-//                    LazyHStack {
-//                        ForEach(vm.photos.indices, id: \.self) { index in
-//                            let asset = vm.photos[index]
-//                            AssetImageView(asset: asset, shouldLoadOrigin: false)
-//                                .frame(width: 50, height: 50)
-//                                .onTapGesture {
-//                                    print("index clicked \(index)")
-//                                    vm.index = index // Change the main image when a thumbnail is tapped
-//                                }
-//                        }
-//                    }
-//                    .padding()
-//                }
-//                .frame(height: 100) // Set a fixed height for the thumbnail bar
-//            }
-        }
-        .onLoad {
-            
-        }
-    }
-     
-     */
     
     var body: some View {
         ZStack {
+            
+            /// Image view container
             VStack{
-//                Image(uiImage: vm.currentImage ?? UIImage(named: "test")!)
-//                    .resizable()
-//                    .scaledToFit()
-//                    .padding()
+                VStack{
+                    Image(uiImage: vm.currentImage ?? UIImage(named: "test")!)
+                        .resizable()
+                        .scaledToFit()
+                        .padding()
+                        .cornerRadius(10, corners: UIRectCorner())
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                .background(.blue.opacity(0.2))
+                .padding(.vertical,1)
             }
-            .background(Color.gray.opacity(0.4))
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.red.opacity(0.2))
             
             VStack{
-                Spacer()
+                
                 HStack{
                     Button {
-                        
+                        PhotoKitManager.shared.deleteAsset(asset: vm.getCurrentIndexAsset())
+                        vm.updateToNextIndex()
                     } label: {
-                        Text("DELETE")
+                        VStack{
+                            Spacer()
+                            Text("  DELETE   ")
+                        }
                     }
+                    .frame(maxHeight: .infinity)
+                    .background(.red.opacity(0.1))
+                    
                     Spacer()
+                    
                     Button {
                         vm.updateToNextIndex()
                     } label: {
-                        Text("KEEP")
+                        VStack{
+                            Spacer()
+                            Text("   KEEP    ")
+                        }
                     }
-                    
+                    .frame(maxHeight: .infinity)
+                    .background(.red.opacity(0.1))
                 }
-                .padding()
-                .frame(height: 60)
+                .frame(maxHeight: .infinity)
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onLoad {
             
         }
@@ -125,5 +66,5 @@ struct PhotoFullScreen: View {
 }
 
 #Preview {
-    PhotoFullScreen(currentIndex: 0)
+    PhotoFullScreen(currentIndex: 0, assetList: nil)
 }

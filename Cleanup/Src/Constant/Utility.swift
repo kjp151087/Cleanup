@@ -16,6 +16,12 @@ class Utility {
         }
     }
     
+    static func performInBackground(delay : TimeInterval, perform :@escaping () -> ()) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + delay) {
+            perform()
+        }
+    }
+    
     static  func changeAddCountryCode(_ tag: String) -> String {
         var tagged = tag
         print("changeAddCountryCode Start -> ",tagged)

@@ -14,7 +14,8 @@ class PhotoScreenViewModel : ObservableObject {
     
     @Published var photos: [PHAsset] = []
     
-    init() {
-        self.photos = PhotoKitManager.shared.fetchAsset(for: .image)
+    init(assetList : [PHAsset]) {
+//        self.photos = PhotoKitManager.shared.fetchAsset(for: .image)
+        self.photos =  assetList
     }
 }

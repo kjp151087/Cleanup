@@ -40,13 +40,13 @@ struct AssetImageView: View {
             }
         }
         .onAppear {
-            print("on    appear \(indexOfList) \(shouldLoadOrigin) \(shouldReleaseOnDisapper)")
+//            print("on    appear \(indexOfList) \(shouldLoadOrigin) \(shouldReleaseOnDisapper)")
             self.isVisiable = true
         }
         .onDisappear {
-            print("on disappear \(indexOfList) \(shouldLoadOrigin) \(shouldReleaseOnDisapper)")
+//            print("on disappear \(indexOfList) \(shouldLoadOrigin) \(shouldReleaseOnDisapper)")
             if (shouldReleaseOnDisapper) {
-                print("on disappear releasing image \(indexOfList)")
+//                print("on disappear releasing image \(indexOfList)")
                 image = nil
             }
             self.isVisiable = false
@@ -54,16 +54,33 @@ struct AssetImageView: View {
     }
     
     private func loadAssetImage() {
-        let delay : DispatchTime = shouldReleaseOnDisapper ? (.now() + 1) : .now()
-        DispatchQueue.global().asyncAfter(deadline: delay){
-            var image = asset.getMedumThumgImage()
+        let delay = shouldReleaseOnDisapper ? 0.1 : 0
+
+        Utility.performInBackground(delay: delay) {
+            var image = asset.getThumgImage()
             if (shouldLoadOrigin) {
                 image = asset.getLargeImage()
+            }
+            else {
+                self.loadLargeThumbImage()
             }
             DispatchQueue.main.async {
                 if (isVisiable){
                     self.image = image
                 }
+            }
+        }
+    }
+    
+    private func loadLargeThumbImage(){
+        print("loadLargeThumbImage \(isVisiable)")
+        let image = asset.getMedumThumgImage()
+        DispatchQueue.main.async {
+            if (isVisiable){
+                Utility.performAsync(delay: 0.3) {
+                    self.image = image
+                }
+                
             }
         }
     }
