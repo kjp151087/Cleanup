@@ -73,7 +73,7 @@ struct AssetImageView: View {
     }
     
     private func loadLargeThumbImage(){
-        print("loadLargeThumbImage \(isVisiable)")
+//        print("loadLargeThumbImage \(isVisiable)")
         let image = asset.getMedumThumgImage()
         DispatchQueue.main.async {
             if (isVisiable){

@@ -12,9 +12,9 @@ import Photos
 
 class PhotoScreenViewModel : ObservableObject {
     
-    @Published var photos: [PHAsset] = []
+    @Published var photos: [PhotoAssetModel] = []
     
-    init(assetList : [PHAsset]) {
+    init(assetList : [PhotoAssetModel]) {
 //        self.photos = PhotoKitManager.shared.fetchAsset(for: .image)
         self.photos =  assetList
     }

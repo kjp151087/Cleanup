@@ -7,8 +7,8 @@ struct PhotoScreen: View {
     @StateObject var vm: PhotoScreenViewModel
     @Environment(\.router) var router
     
-    init(assetList : [PHAsset]? = nil)  {
-        _vm = StateObject(wrappedValue: PhotoScreenViewModel(assetList: assetList ?? PhotoKitManager.shared.photosList))
+    init(assetList : [PhotoAssetModel]? = nil)  {
+        _vm = StateObject(wrappedValue: PhotoScreenViewModel(assetList: assetList ?? []))
     }
 
     let columns = [
@@ -24,11 +24,11 @@ struct PhotoScreen: View {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 10) { // Vertical spacing between rows
                             ForEach(vm.photos.indices, id: \.self) { index in
-                                let asset = vm.photos[index]
+                                let asset = vm.photos[index].asset
                                 
                                 Button {
                                     router.showScreen(.push) { router in
-                                        PhotoFullScreen(currentIndex: index)
+                                        PhotoFullScreen(currentIndex: index, assetList: vm.photos)
                                     }
                                 } label: {
                                     AssetImageView(asset: asset,shouldReleaseOnDisapper: true)

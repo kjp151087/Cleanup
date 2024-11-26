@@ -9,7 +9,9 @@ import Foundation
 import Photos
 import UIKit
 
-class PhotoAssetModel : PHAsset {
+class PhotoAssetModel : Identifiable  {
+    var id = UUID() // Unique identifier
+
     var selected : Bool = false
     var asset : PHAsset
     

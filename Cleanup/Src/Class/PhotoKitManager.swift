@@ -13,14 +13,14 @@ import Combine
 
 class PhotoKitManager : ObservableObject {
     
-    var testing = true
+    var testing = false
     
     static var shared = PhotoKitManager()
     
     var status : PHAuthorizationStatus = .notDetermined
-    var photosList : [PHAsset] = []
-    var videosList : [PHAsset] = []
-    var deletedPhotoList : [PHAsset] = []
+    var photosList : [PhotoAssetModel] = []
+    var videosList : [PhotoAssetModel] = []
+    var deletedPhotoList : [PhotoAssetModel] = []
     var similarPhotosList : [GridModel] = []
     
     var isScaning = false
@@ -41,6 +41,7 @@ class PhotoKitManager : ObservableObject {
     
     private init() {
         status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
+        fetchAllAssetes()
         print("status ", status);
     }
     
@@ -62,26 +63,34 @@ class PhotoKitManager : ObservableObject {
     func fetchAllAssetes()  {
         photosList = self.fetchAsset(for: .image)
         videosList = self.fetchAsset(for: .video)
+        
+        let deletedList = DataManager.shared.deletedAssetList()
+        for asset in photosList {
+            let identifire = asset.asset.localIdentifier
+            if deletedList.contains(identifire) {
+                deletedPhotoList.append(asset)
+            }
+        }
     }
     
-    func fetchAsset(for media:PHAssetMediaType) -> [PHAsset] {
+    func fetchAsset(for media:PHAssetMediaType) -> [PhotoAssetModel] {
     
-        var fetchedPhotos: [PHAsset] = []
+        var fetchedPhotos: [PhotoAssetModel] = []
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
         let assets = PHAsset.fetchAssets(with: media, options: fetchOptions)
         
         for i in 0..<assets.count {
-            fetchedPhotos.append(assets[i])
+            fetchedPhotos.append(PhotoAssetModel(asset: assets[i]))
         }
         
         return fetchedPhotos
     }
     
-    func fetchAsset(for media:PHAssetMediaType, subType : PHAssetMediaSubtype) -> [PHAsset] {
+    func fetchAsset(for media:PHAssetMediaType, subType : PHAssetMediaSubtype) -> [PhotoAssetModel] {
     
-        var fetchedPhotos: [PHAsset] = []
+        var fetchedPhotos: [PhotoAssetModel] = []
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fetchOptions.predicate = NSPredicate(format: "mediaType == %d AND (mediaSubtypes & %d) != 0",
@@ -92,15 +101,15 @@ class PhotoKitManager : ObservableObject {
         let assets = PHAsset.fetchAssets(with: media, options: fetchOptions)
         
         for i in 0..<assets.count {
-            fetchedPhotos.append(assets[i])
+            fetchedPhotos.append(PhotoAssetModel(asset: assets[i]))
         }
         
         return fetchedPhotos
     }
     
-    func totalSizeOnDisk(assets : [PHAsset]) -> Float{
+    func totalSizeOnDisk(assets : [PhotoAssetModel]) -> Float{
         return assets.reduce(0) { result, item in
-           result + item.assetSize()
+            result + item.asset.assetSize()
        }
     }
 
@@ -206,8 +215,9 @@ class PhotoKitManager : ObservableObject {
         return imageDistance
     }
     
-    func deleteAsset(asset : PHAsset) {
+    func deleteAsset(asset : PhotoAssetModel) {
         deletedPhotoList.append(asset)
+        DataManager.shared.deleteAssetId(assetID: asset.asset.localIdentifier)
     }
     
 }

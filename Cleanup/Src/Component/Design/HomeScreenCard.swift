@@ -11,7 +11,7 @@ import Photos
 struct HomeScreenCard: View {
     
     var cardTitle : String
-    var lists : [PHAsset] = []
+    var lists : [PhotoAssetModel] = []
     
     var body: some View {
         ZStack{
@@ -32,8 +32,8 @@ struct HomeScreenCard: View {
                     // Using LazyHStack for lazy loading of images
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack {
-                            ForEach(lists.prefix(3), id: \.self) { asset in
-                                AssetImageView(asset: asset)
+                            ForEach(lists.prefix(3), id: \.id) { item in
+                                AssetImageView(asset: item.asset)
                                     .frame(width: 120, height: 120)
                                     .cornerRadius(8)
                             }

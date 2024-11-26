@@ -51,7 +51,15 @@ struct HomeScreen: View {
                     HomeScreenCard(cardTitle: "Videos",lists: vm.videos)
                     HomeScreenCard(cardTitle: "Live Photos",lists: vm.livePhotos)
                     HomeScreenCard(cardTitle: "Screen Shots",lists: vm.screenshots)
-                    HomeScreenCard(cardTitle: "Deleted Photos",lists: vm.deletedPhotos)
+                    
+                    
+                    Button {
+                        router.showScreen(.push) { r in
+                            PhotoScreen(assetList: vm.deletedPhotos)
+                        }
+                    } label: {
+                        HomeScreenCard(cardTitle: "Deleted Photos",lists: vm.deletedPhotos)
+                    }
                 }
             }
         }

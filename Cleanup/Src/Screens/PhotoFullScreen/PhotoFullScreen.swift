@@ -5,7 +5,7 @@ struct PhotoFullScreen: View {
     
     @StateObject var vm: PhotoFullScreenViewModel
     
-    init(currentIndex: Int, assetList : [PHAsset]? = nil) {
+    init(currentIndex: Int, assetList : [PhotoAssetModel]? = nil) {
         _vm = StateObject(wrappedValue: PhotoFullScreenViewModel(index: currentIndex, assetList: assetList))
     }
     

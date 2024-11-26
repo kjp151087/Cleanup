@@ -18,11 +18,11 @@ import PhotosUI
 class HomeScreenViewModel : ObservableObject {
     
 //    @Published var fetchedPhotos: [GridModel] = []
-    @Published var photos: [PHAsset] = []
-    @Published var videos: [PHAsset] = []
-    @Published var livePhotos: [PHAsset] = []
-    @Published var screenshots: [PHAsset] = []
-    @Published var deletedPhotos: [PHAsset] = []
+    @Published var photos: [PhotoAssetModel] = []
+    @Published var videos: [PhotoAssetModel] = []
+    @Published var livePhotos: [PhotoAssetModel] = []
+    @Published var screenshots: [PhotoAssetModel] = []
+    @Published var deletedPhotos: [PhotoAssetModel] = []
     
     @Published var chartData: [ChartInfo] = []
     
