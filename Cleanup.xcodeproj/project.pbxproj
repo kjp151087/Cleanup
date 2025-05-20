@@ -13,6 +13,9 @@
 		F95FE6362CBFD52700BE8E4D /* PhotoFullScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */; };
 		F95FE6382CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */; };
 		F95FE63A2CBFD8AB00BE8E4D /* PhotoAssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6392CBFD8AB00BE8E4D /* PhotoAssetModel.swift */; };
+		F9653CDC2CF8B53C00A7435B /* BadgeCountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9653CDA2CF8B53C00A7435B /* BadgeCountButton.swift */; };
+		F9653CDD2CF8B53C00A7435B /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9653CDB2CF8B53C00A7435B /* TextButton.swift */; };
+		F9653CDF2CF8B63100A7435B /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9653CDE2CF8B63100A7435B /* CheckboxButton.swift */; };
 		F99227F02CB8183F0066D70C /* AssetImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99227EF2CB8183F0066D70C /* AssetImageView.swift */; };
 		F99227F32CB83A6F0066D70C /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99227F22CB83A6F0066D70C /* PieChartView.swift */; };
 		F997465A2CB0270100D3C75D /* HomeScreenCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99746592CB0270100D3C75D /* HomeScreenCard.swift */; };
@@ -35,10 +38,8 @@
 		F9C72FB02CA5BC9F006F58E6 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F652CA5BC9F006F58E6 /* ProgressView.swift */; };
 		F9C72FB22CA5BC9F006F58E6 /* RootNavScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F672CA5BC9F006F58E6 /* RootNavScreen.swift */; };
 		F9C72FB32CA5BC9F006F58E6 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F682CA5BC9F006F58E6 /* ToastView.swift */; };
-		F9C72FB42CA5BC9F006F58E6 /* BadgeCountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F692CA5BC9F006F58E6 /* BadgeCountButton.swift */; };
 		F9C72FB52CA5BC9F006F58E6 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F6A2CA5BC9F006F58E6 /* CustomAlertView.swift */; };
 		F9C72FB62CA5BC9F006F58E6 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F6B2CA5BC9F006F58E6 /* BaseTextField.swift */; };
-		F9C72FB72CA5BC9F006F58E6 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F6C2CA5BC9F006F58E6 /* TextButton.swift */; };
 		F9C72FB82CA5BC9F006F58E6 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F6D2CA5BC9F006F58E6 /* SeparatorLine.swift */; };
 		F9C72FD12CA5BC9F006F58E6 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F912CA5BC9F006F58E6 /* AppConstant.swift */; };
 		F9C72FD22CA5BC9F006F58E6 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F922CA5BC9F006F58E6 /* Utility.swift */; };
@@ -59,6 +60,9 @@
 		F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullScreen.swift; sourceTree = "<group>"; };
 		F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullScreenViewModel.swift; sourceTree = "<group>"; };
 		F95FE6392CBFD8AB00BE8E4D /* PhotoAssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAssetModel.swift; sourceTree = "<group>"; };
+		F9653CDA2CF8B53C00A7435B /* BadgeCountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeCountButton.swift; sourceTree = "<group>"; };
+		F9653CDB2CF8B53C00A7435B /* TextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
+		F9653CDE2CF8B63100A7435B /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		F99227EF2CB8183F0066D70C /* AssetImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetImageView.swift; sourceTree = "<group>"; };
 		F99227F22CB83A6F0066D70C /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		F99746592CB0270100D3C75D /* HomeScreenCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCard.swift; sourceTree = "<group>"; };
@@ -81,10 +85,8 @@
 		F9C72F652CA5BC9F006F58E6 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		F9C72F672CA5BC9F006F58E6 /* RootNavScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavScreen.swift; sourceTree = "<group>"; };
 		F9C72F682CA5BC9F006F58E6 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		F9C72F692CA5BC9F006F58E6 /* BadgeCountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeCountButton.swift; sourceTree = "<group>"; };
 		F9C72F6A2CA5BC9F006F58E6 /* CustomAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		F9C72F6B2CA5BC9F006F58E6 /* BaseTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
-		F9C72F6C2CA5BC9F006F58E6 /* TextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		F9C72F6D2CA5BC9F006F58E6 /* SeparatorLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
 		F9C72F912CA5BC9F006F58E6 /* AppConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		F9C72F922CA5BC9F006F58E6 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -118,6 +120,16 @@
 				F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */,
 			);
 			path = PhotoFullScreen;
+			sourceTree = "<group>";
+		};
+		F9653CD92CF8B53C00A7435B /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				F9653CDA2CF8B53C00A7435B /* BadgeCountButton.swift */,
+				F9653CDB2CF8B53C00A7435B /* TextButton.swift */,
+				F9653CDE2CF8B63100A7435B /* CheckboxButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		F99227F12CB83A590066D70C /* SupportUIComponent */ = {
@@ -249,15 +261,14 @@
 		F9C72F622CA5BC9F006F58E6 /* BasicComponent */ = {
 			isa = PBXGroup;
 			children = (
+				F9653CD92CF8B53C00A7435B /* Button */,
 				F9C72F632CA5BC9F006F58E6 /* AttributedText.swift */,
 				F9C72F642CA5BC9F006F58E6 /* RootAppScreen.swift */,
 				F9C72F672CA5BC9F006F58E6 /* RootNavScreen.swift */,
 				F9C72F652CA5BC9F006F58E6 /* ProgressView.swift */,
 				F9C72F682CA5BC9F006F58E6 /* ToastView.swift */,
-				F9C72F692CA5BC9F006F58E6 /* BadgeCountButton.swift */,
 				F9C72F6A2CA5BC9F006F58E6 /* CustomAlertView.swift */,
 				F9C72F6B2CA5BC9F006F58E6 /* BaseTextField.swift */,
-				F9C72F6C2CA5BC9F006F58E6 /* TextButton.swift */,
 				F9C72F6D2CA5BC9F006F58E6 /* SeparatorLine.swift */,
 			);
 			path = BasicComponent;
@@ -417,12 +428,11 @@
 				F99B084A2CBC2FD7001A79DD /* PhotoScreen.swift in Sources */,
 				F9C72FB82CA5BC9F006F58E6 /* SeparatorLine.swift in Sources */,
 				F99227F02CB8183F0066D70C /* AssetImageView.swift in Sources */,
-				F9C72FB42CA5BC9F006F58E6 /* BadgeCountButton.swift in Sources */,
 				F9D9DC0E2CADA273006CA6C6 /* SimilarPhotoScreen.swift in Sources */,
+				F9653CDC2CF8B53C00A7435B /* BadgeCountButton.swift in Sources */,
 				F9C72FA42CA5BC9F006F58E6 /* StringExtension.swift in Sources */,
 				F9C72FB02CA5BC9F006F58E6 /* ProgressView.swift in Sources */,
 				F9C72F3F2CA5BC54006F58E6 /* ContentView.swift in Sources */,
-				F9C72FB72CA5BC9F006F58E6 /* TextButton.swift in Sources */,
 				F9C72FB62CA5BC9F006F58E6 /* BaseTextField.swift in Sources */,
 				F91EDB552CC40D3800C0102B /* GridModel.swift in Sources */,
 				F9D9DC0B2CADA242006CA6C6 /* HomeScreenViewModel.swift in Sources */,
@@ -430,10 +440,12 @@
 				F9C72FA02CA5BC9F006F58E6 /* EncodableExtension.swift in Sources */,
 				F9C72FA32CA5BC9F006F58E6 /* NSAttributedStringExtension.swift in Sources */,
 				F95FE6382CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift in Sources */,
+				F9653CDF2CF8B63100A7435B /* CheckboxButton.swift in Sources */,
 				F9C72FD32CA5BC9F006F58E6 /* Color.swift in Sources */,
 				F95FE63A2CBFD8AB00BE8E4D /* PhotoAssetModel.swift in Sources */,
 				F9C72FAD2CA5BC9F006F58E6 /* ViewOnLoadModifier.swift in Sources */,
 				F9C72FB22CA5BC9F006F58E6 /* RootNavScreen.swift in Sources */,
+				F9653CDD2CF8B53C00A7435B /* TextButton.swift in Sources */,
 				F9C72FA12CA5BC9F006F58E6 /* UserDefaultExtension.swift in Sources */,
 				F9C72F3D2CA5BC54006F58E6 /* CleanupApp.swift in Sources */,
 				F91EDB532CC40CF800C0102B /* ImageModel.swift in Sources */,
@@ -581,13 +593,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cleanup;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shinfotech.cleanup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -614,13 +626,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cleanup;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shinfotech.cleanup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

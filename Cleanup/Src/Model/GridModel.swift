@@ -8,27 +8,49 @@
 import Foundation
 import UIKit
 import PhotosUI
+import SwiftUI
 
 
-struct GridModel : Identifiable {
-    
+struct GridModel: Identifiable {
     var id = UUID() // Unique identifier
-
-    var images : [ImageModel]
-    var index : Int
+    var images: [ImageModel] = []
+    var index: Int = -1
     
-    init(index : Int, images: [ImageModel]) {
+    init(index: Int, images: [ImageModel]) {
         self.images = images
         self.index = index
+        
+        for i in 0..<self.images.count {
+            self.images[i].isSelected = i != 0
+        }
     }
-    
-//    func totalSize() -> Float {
-//        var total  :Float = 0.0
-//
-//        for item in images {
-//            total += item.asset?.assetSize() ?? 0.0
-//        }
-//
-//        return total;
-//    }
 }
+
+
+//
+//struct GridModel : Identifiable {
+//    
+//    var id = UUID() // Unique identifier
+//
+//    var images : [ImageModel] = []
+//    var index : Int = -1
+//    
+//    init(index : Int, images: [ImageModel]) {
+//        self.images = images
+//        self.index = index
+//        
+//        for i in 0..<self.images.count {
+//            self.images[i].isSelected = i != 0
+//        }
+//    }
+//    
+////    func totalSize() -> Float {
+////        var total  :Float = 0.0
+////
+////        for item in images {
+////            total += item.asset?.assetSize() ?? 0.0
+////        }
+////
+////        return total;
+////    }
+//}

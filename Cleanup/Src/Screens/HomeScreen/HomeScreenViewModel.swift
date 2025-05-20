@@ -30,6 +30,8 @@ class HomeScreenViewModel : ObservableObject {
     @Published var progress: Float = 0
     
     func requestPermission() {
+        
+        
         let status = PhotoKitManager.shared.status
         print("status ",status.rawValue)
         if (status == .notDetermined) {

@@ -9,7 +9,7 @@ import Foundation
 import Photos
 import UIKit
 
-struct ImageModel : Identifiable {
+class ImageModel: ObservableObject, Identifiable {
     
     var id = UUID() // Unique identifier
     var index : Int
@@ -18,7 +18,8 @@ struct ImageModel : Identifiable {
     var image : UIImage?
     var deltaImageProcess : Float
     var deltaImageTime : Float
-    var isSelected = false
+    @Published var isSelected: Bool = false 
+
     
     init(index: Int, asset : PHAsset?, image: UIImage?, difValue : Float, deltaTime : Float) {
         self.image = image

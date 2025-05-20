@@ -16,7 +16,20 @@ struct SimilarPhotoScreen: View {
                 LazyVStack {
                     ForEach(vm.similarPhotos, id: \.id) { item in
                         VStack{
-                            ImageCollectionCard(imageInfo: item)
+                            ImageCollectionCard(imageInfo: item) { index, selection in
+                                print("check index \(index), \(selection)")
+                                
+                                for i in vm.similarPhotos[index].images{
+                                    print( " i1 -> \(i.isSelected)")
+                                }
+                                
+                                vm.similarPhotos[index].images.first?.isSelected = !(vm.similarPhotos[index].images.first?.isSelected ?? selection)
+                                
+                                
+                                for i in vm.similarPhotos[index].images{
+                                    print( " i2 -> \(i.isSelected)")
+                                }
+                            }
                             Divider()
                         }
                     }

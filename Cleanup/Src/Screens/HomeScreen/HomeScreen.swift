@@ -66,6 +66,12 @@ struct HomeScreen: View {
         .onAppear(perform: {
             if (PhotoKitManager.shared.isAccessGranted){
                 vm.deletedPhotos = PhotoKitManager.shared.deletedPhotoList
+                
+                Utility.performAsync(delay: 2) {
+                    router.showScreen(.push) { r in
+                        SimilarPhotoScreen()
+                    }
+                }
             }
         })
         .onLoad {

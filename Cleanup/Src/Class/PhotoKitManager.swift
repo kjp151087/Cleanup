@@ -13,7 +13,7 @@ import Combine
 
 class PhotoKitManager : ObservableObject {
     
-    var testing = false
+    var testing = true
     
     static var shared = PhotoKitManager()
     
@@ -161,7 +161,13 @@ class PhotoKitManager : ObservableObject {
                 }
                 
                 if (i % 25 == 0) {
-                    updateList(similarPhotosList,false)
+                    Utility.performAsync(delay: 0.1) { [weak self] in
+                        if let list = self?.similarPhotosList{
+                            updateList(list,false)
+                        }
+                        
+                    }
+                    
                 }
                 
 //                print("Distance \(i) \(scanningProgress) \(distance) - \(widthDelta) - \(heightDelta) ")

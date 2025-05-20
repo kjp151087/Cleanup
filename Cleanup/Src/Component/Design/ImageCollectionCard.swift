@@ -30,10 +30,66 @@ struct ImageCard : View {
     }
 }
 
+struct SimilarImageBox : View {
+    @State var image : ImageModel
+    
+    var selectionAction : ((Bool) -> ())?
+    
+    var body: some View {
+        if let asset = image.asset {
+            ZStack {
+                AssetImageView(asset: asset)
+                    .frame(width: 120, height: 120)
+                    .cornerRadius(8)
+                
+                VStack{
+                    Spacer()
+                    HStack() {
+                        if image.isSelected {
+                            CheckboxButton(checked: .constant(true), action: { selected in
+                                selectionAction?(false)
+                            })
+                        }
+                        else  {
+                            CheckboxButton(checked: .constant(false), action: { selected in
+                                selectionAction?(true)
+                            })
+                        }
+                        
+                        Spacer()
+                        VStack{
+                            Text("\(String(format: "%0.2f", asset.assetSize() ?? 0)) MB")
+                                .font(.subheadline)
+                                .foregroundStyle(.white)
+                        }
+                        .padding(.horizontal,5)
+                        .padding(.vertical,3)
+                        .background(.black.opacity(0.5))
+                        .cornerRadius(5, corners: .allCorners)
+                    }
+                }
+                .padding(4)
+                
+            }
+            .background(.red)
+        }
+        else{
+            VStack{
+                Text("No Data image box")
+            }
+        }
+//                            Text("DP: \(String(format: "%0.2f", item.deltaImageProcess))")
+//                            Text("DT: \(String(format: "%0.2f", item.deltaImageTime))")
+//                            Text("FileSize: \(String(format: "%0.2f", item.asset?.assetSize() ?? 0))")
+    }
+}
+
 struct ImageCollectionCard: View {
     
-    let imageInfo :  GridModel
+    @State var imageInfo : GridModel
     @State var image = UIImage(named: "test")
+    
+    var selectionAction : ((Int,Bool) -> ())?
     
     var body: some View {
         VStack{
@@ -44,22 +100,16 @@ struct ImageCollectionCard: View {
             }
             ScrollView(.horizontal){
                 LazyHStack {
-                    ForEach(imageInfo.images, id: \.id) { item in
-                        VStack{
-                            if let asset = item.asset {
-                                AssetImageView(asset: asset)
-                                    .frame(width: 120, height: 120)
-                                    .cornerRadius(8)
+                    ForEach(Array(imageInfo.images.enumerated()), id: \.element.id) { index, item in
+                        VStack {
+                            SimilarImageBox(image: item) { selection in
+                                print("Index: \(index), Selection: \(selection)")
+                                imageInfo.images[index].isSelected = selection
+                                selectionAction?(index,selection)
                             }
-                            Text("DP: \(String(format: "%0.2f", item.deltaImageProcess))")
-                            Text("DT: \(String(format: "%0.2f", item.deltaImageTime))")
-                            Text("FileSize: \(String(format: "%0.2f", item.asset?.assetSize() ?? 0))")
-                            
-                            
                         }
                     }
                 }
-                
             }
         }
         .onAppear {
