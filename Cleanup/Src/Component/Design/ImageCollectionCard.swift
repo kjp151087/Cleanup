@@ -40,20 +40,18 @@ struct SimilarImageBox : View {
         if let asset = image.asset {
             ZStack {
                 
-//                Button {
-//                    if let image = asset.getLargeImage() {
-//                        router.showScreen(.push) { r in
-//                            ImageFullScreen(image: image)
-//                        }
-//                    }
-//                } label: {
-//                    AssetImageView(asset: asset)
-//                    .frame(width: 150, height: 150)
-//                    .cornerRadius(8)
-//                }
+                Button {
+                    if let image = asset.getLargeImage() {
+                        router.showScreen(.push) { r in
+                            ImageFullScreen(image: image)
+                        }
+                    }
+                } label: {
+                    AssetImageView(asset: asset)
+                    .frame(width: 150, height: 150)
+                    .cornerRadius(8)
+                }
 
-                
-                
                 VStack{
                     Spacer()
                     HStack() {
