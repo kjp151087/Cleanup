@@ -48,7 +48,7 @@ struct SimilarImageBox : View {
                     }
                 } label: {
                     AssetImageView(asset: asset)
-                    .frame(width: 150, height: 150)
+                    .frame(width: 130, height: 130)
                     .cornerRadius(8)
                 }
 
@@ -90,9 +90,9 @@ struct SimilarImageBox : View {
                 Text("No Data image box")
             }
         }
-//                            Text("DP: \(String(format: "%0.2f", item.deltaImageProcess))")
-//                            Text("DT: \(String(format: "%0.2f", item.deltaImageTime))")
-//                            Text("FileSize: \(String(format: "%0.2f", item.asset?.assetSize() ?? 0))")
+//        Text("DP: \(String(format: "%0.2f", item.deltaImageProcess))")
+//        Text("DT: \(String(format: "%0.2f", item.deltaImageTime))")
+//        Text("FileSize: \(String(format: "%0.2f", item.asset?.assetSize() ?? 0))")
     }
 }
 
