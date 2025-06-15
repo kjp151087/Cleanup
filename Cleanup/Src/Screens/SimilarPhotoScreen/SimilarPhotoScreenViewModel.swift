@@ -60,4 +60,8 @@ class SimilarPhotoScreenViewModel : ObservableObject {
         
     }
     
+    func updateSimilarPhotos(_ photos: [GridModel]) {
+        self.similarPhotos = photos
+    }
+    
 }

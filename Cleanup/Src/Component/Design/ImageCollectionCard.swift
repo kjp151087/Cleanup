@@ -32,15 +32,27 @@ struct ImageCard : View {
 
 struct SimilarImageBox : View {
     @State var image : ImageModel
+    @Environment(\.router) var router
     
     var selectionAction : ((Bool) -> ())?
     
     var body: some View {
         if let asset = image.asset {
             ZStack {
-                AssetImageView(asset: asset)
-                    .frame(width: 120, height: 120)
-                    .cornerRadius(8)
+                
+//                Button {
+//                    if let image = asset.getLargeImage() {
+//                        router.showScreen(.push) { r in
+//                            ImageFullScreen(image: image)
+//                        }
+//                    }
+//                } label: {
+//                    AssetImageView(asset: asset)
+//                    .frame(width: 150, height: 150)
+//                    .cornerRadius(8)
+//                }
+
+                
                 
                 VStack{
                     Spacer()
@@ -49,11 +61,14 @@ struct SimilarImageBox : View {
                             CheckboxButton(checked: .constant(true), action: { selected in
                                 selectionAction?(false)
                             })
+                            .frame(width: 30, height: 30)
                         }
                         else  {
                             CheckboxButton(checked: .constant(false), action: { selected in
                                 selectionAction?(true)
                             })
+                            .frame(width: 30, height: 30)
+                            
                         }
                         
                         Spacer()
@@ -71,7 +86,6 @@ struct SimilarImageBox : View {
                 .padding(4)
                 
             }
-            .background(.red)
         }
         else{
             VStack{
@@ -86,6 +100,7 @@ struct SimilarImageBox : View {
 
 struct ImageCollectionCard: View {
     
+    @Environment(\.router) var router
     @State var imageInfo : GridModel
     @State var image = UIImage(named: "test")
     
@@ -104,7 +119,7 @@ struct ImageCollectionCard: View {
                         VStack {
                             SimilarImageBox(image: item) { selection in
                                 print("Index: \(index), Selection: \(selection)")
-                                imageInfo.images[index].isSelected = selection
+//                                imageInfo.images[index].isSelected = selection
                                 selectionAction?(index,selection)
                             }
                         }

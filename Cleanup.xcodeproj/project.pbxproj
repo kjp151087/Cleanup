@@ -21,6 +21,7 @@
 		F997465A2CB0270100D3C75D /* HomeScreenCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99746592CB0270100D3C75D /* HomeScreenCard.swift */; };
 		F99B084A2CBC2FD7001A79DD /* PhotoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B08492CBC2FD7001A79DD /* PhotoScreen.swift */; };
 		F99B084D2CBC2FEB001A79DD /* PhotoScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B084C2CBC2FEB001A79DD /* PhotoScreenViewModel.swift */; };
+		F9BB6F182DFF3753007BF42E /* ImageFullScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB6F172DFF3751007BF42E /* ImageFullScreen.swift */; };
 		F9C72F3D2CA5BC54006F58E6 /* CleanupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F3C2CA5BC54006F58E6 /* CleanupApp.swift */; };
 		F9C72F3F2CA5BC54006F58E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F3E2CA5BC54006F58E6 /* ContentView.swift */; };
 		F9C72F412CA5BC56006F58E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9C72F402CA5BC56006F58E6 /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		F99746592CB0270100D3C75D /* HomeScreenCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCard.swift; sourceTree = "<group>"; };
 		F99B08492CBC2FD7001A79DD /* PhotoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoScreen.swift; sourceTree = "<group>"; };
 		F99B084C2CBC2FEB001A79DD /* PhotoScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoScreenViewModel.swift; sourceTree = "<group>"; };
+		F9BB6F172DFF3751007BF42E /* ImageFullScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFullScreen.swift; sourceTree = "<group>"; };
 		F9C72F392CA5BC54006F58E6 /* Cleanup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cleanup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9C72F3C2CA5BC54006F58E6 /* CleanupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanupApp.swift; sourceTree = "<group>"; };
 		F9C72F3E2CA5BC54006F58E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -147,6 +149,14 @@
 				F99B084C2CBC2FEB001A79DD /* PhotoScreenViewModel.swift */,
 			);
 			path = PhotoScreen;
+			sourceTree = "<group>";
+		};
+		F9BB6F162DFF373F007BF42E /* ImageFullScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F9BB6F172DFF3751007BF42E /* ImageFullScreen.swift */,
+			);
+			path = ImageFullScreen;
 			sourceTree = "<group>";
 		};
 		F9C72F302CA5BC54006F58E6 = {
@@ -277,6 +287,7 @@
 		F9C72F6E2CA5BC9F006F58E6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F9BB6F162DFF373F007BF42E /* ImageFullScreen */,
 				F95FE6342CBFD50F00BE8E4D /* PhotoFullScreen */,
 				F99B08482CBC2FCC001A79DD /* PhotoScreen */,
 				F9D9DC072CADA242006CA6C6 /* HomeScreen */,
@@ -426,6 +437,7 @@
 				F9C72FD12CA5BC9F006F58E6 /* AppConstant.swift in Sources */,
 				F9C72FAE2CA5BC9F006F58E6 /* AttributedText.swift in Sources */,
 				F99B084A2CBC2FD7001A79DD /* PhotoScreen.swift in Sources */,
+				F9BB6F182DFF3753007BF42E /* ImageFullScreen.swift in Sources */,
 				F9C72FB82CA5BC9F006F58E6 /* SeparatorLine.swift in Sources */,
 				F99227F02CB8183F0066D70C /* AssetImageView.swift in Sources */,
 				F9D9DC0E2CADA273006CA6C6 /* SimilarPhotoScreen.swift in Sources */,

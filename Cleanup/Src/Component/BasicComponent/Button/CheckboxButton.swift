@@ -15,7 +15,10 @@ struct CheckboxButton: View {
     var body: some View {
         VStack{
             Image(systemName: checked ? "checkmark.square.fill" : "square")
-                .foregroundColor(checked ? Color(UIColor.systemBlue) : .blue)
+                .resizable()
+                .aspectRatio(contentMode: .fit) 
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .foregroundColor(checked ? .white: .white)
                 .onTapGesture {
                     print("Tap on checkbox")
                     action?(!checked)

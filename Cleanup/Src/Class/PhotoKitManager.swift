@@ -13,7 +13,7 @@ import Combine
 
 class PhotoKitManager : ObservableObject {
     
-    var testing = true
+    var testing = false
     
     static var shared = PhotoKitManager()
     

@@ -40,13 +40,10 @@ struct AssetImageView: View {
             }
         }
         .onAppear {
-//            print("on    appear \(indexOfList) \(shouldLoadOrigin) \(shouldReleaseOnDisapper)")
             self.isVisiable = true
         }
         .onDisappear {
-//            print("on disappear \(indexOfList) \(shouldLoadOrigin) \(shouldReleaseOnDisapper)")
             if (shouldReleaseOnDisapper) {
-//                print("on disappear releasing image \(indexOfList)")
                 image = nil
             }
             self.isVisiable = false
