@@ -20,9 +20,9 @@ struct GridModel: Identifiable {
         self.images = images
         self.index = index
         
-        for i in 0..<self.images.count {
-            self.images[i].isSelected = i != 0
-        }
+//        for i in 0..<self.images.count {
+//            self.images[i].isSelected = i != 0
+//        }
     }
 }
 

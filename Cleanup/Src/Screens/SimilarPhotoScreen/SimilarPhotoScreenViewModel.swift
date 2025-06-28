@@ -13,7 +13,7 @@ class SimilarPhotoScreenViewModel : ObservableObject {
     @Published var similarPhotos: [GridModel] = []
     
     func fetchPhotos() {
-        print("fetchPhotos")
+//        print("fetchPhotos")
         if (PhotoKitManager.shared.isAccessGranted) {
             self.similarPhotos = PhotoKitManager.shared.similarPhotosList
             if (PhotoKitManager.shared.isScaning) {

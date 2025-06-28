@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CheckboxButton: View {
     @Binding var checked: Bool
+    var foregroundColor : Color = .white
     
     var action : ((Bool) -> ())?
     
@@ -18,7 +19,7 @@ struct CheckboxButton: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit) 
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .foregroundColor(checked ? .white: .white)
+                .foregroundColor(foregroundColor)
                 .onTapGesture {
                     print("Tap on checkbox")
                     action?(!checked)

@@ -104,12 +104,61 @@ struct ImageCollectionCard: View {
     
     var selectionAction : ((Int,Bool) -> ())?
     
+    func getDateOfPhoto() -> String {
+        if let firstImage = imageInfo.images.first {
+            if let date = firstImage.asset?.creationDate {
+                return date.formateDate(formatDate: "yyyy-MM-dd")
+            }
+        }
+        return ""
+    }
+    
+    var isChecked : Bool {
+        
+        for element in imageInfo.images {
+            if element.isSelected {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func sendAction(flag : Bool) {
+        if flag {
+            for (index, name) in imageInfo.images.enumerated() {
+                if (index != 0) {
+                    selectionAction?(index, true)
+                }
+            }
+        }
+        else{
+            for (index, name) in imageInfo.images.enumerated() {
+                selectionAction?(index, false)
+            }
+        }
+    }
+    
     var body: some View {
         VStack{
             HStack{
 //                Text("\(imageInfo.images.count) Similar  : \(imageInfo.totalSize()) MB")
+                if (isChecked) {
+                    CheckboxButton(checked: .constant(true),foregroundColor: .black, action: { selected in
+                        sendAction(flag: false)
+                    })
+                    .frame(width: 30, height: 30)
+                }
+                else{
+                    CheckboxButton(checked: .constant(false),foregroundColor: .black, action: { selected in
+                        sendAction(flag: true)
+                    })
+                    .frame(width: 30, height: 30)
+                }
+                
+                
                 Text("\(imageInfo.images.count) Similar")
                 Spacer()
+                Text("\(getDateOfPhoto())")
             }
             ScrollView(.horizontal){
                 LazyHStack {
