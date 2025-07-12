@@ -55,7 +55,10 @@ class HomeScreenViewModel : ObservableObject {
         
         PhotoKitManager.shared.requestPermission { isGranted in
             PhotoKitManager.shared.filterSimilarPhotos { newList, isAllImageProcess in
-                self.progress = PhotoKitManager.shared.scanningProgress
+                DispatchQueue.main.async {
+                    self.progress = PhotoKitManager.shared.scanningProgress
+                }
+                
 //                self.fetchedPhotos = newList
             }
         }

@@ -128,7 +128,6 @@ class PhotoKitManager : ObservableObject {
         var mainIndex = 0
         
         let startTime = Date()
-        print("assets.count ",assets.count)
         
         var countLegnth = testing ? 350 : assets.count
         isScaning = true
@@ -139,25 +138,55 @@ class PhotoKitManager : ObservableObject {
                 let image1 = assets[i-1].getThumgImage() ?? UIImage(named: "test")!
                 let image2 = assets[i].getThumgImage() ?? UIImage(named: "test")!
                 
-                let distance = PhotoKitManager.shared.compareImage(image1: image1, image2: image2)
-                let deltaTime = assets[i-1].creationDate!.timeIntervalSince1970 - assets[i].creationDate!.timeIntervalSince1970
-                
-                let widthDelta = abs(image1.size.width - image2.size.width)
-                let heightDelta = abs(image1.size.height - image2.size.height)
-                
-//                print("distance -> \(distance) between \(i-1)-\(i)")
-                
-                if ((distance < 0.50 && deltaTime < 15) && (widthDelta < 10 && heightDelta < 10)) {
-                    imageList.append(ImageModel(index:imageList.count, asset: assets[i], image: nil, difValue: distance, deltaTime: Float(deltaTime)))
-                }
-                else{
-                    if(imageList.count > 1){
-                        similarPhotosList.append(GridModel(index: mainIndex, images: imageList))
-                        mainIndex += 1
+                if let parentID = DataManager.shared.getParentId(for: assets[i].localIdentifier) {
+                    print("\(i) -> in side if")
+                    var index = -1
+                    for j in 0..<similarPhotosList.count {
+                        if (similarPhotosList[j].id.uuidString == parentID) {
+                            index = j
+                            break;
+                        }
                     }
-                    imageList = []
-                    imageList.append(ImageModel(index:imageList.count, asset: assets[i], image: nil, difValue: distance, deltaTime: Float(deltaTime)))
+                    if (index != -1) {
+                        similarPhotosList[index].images.append(ImageModel(index: similarPhotosList[index].images.count, asset: assets[i], image: nil, difValue: 0, deltaTime: 0))
+                    }
+                    else{
+                        let imageObj = ImageModel(index: 0, asset: assets[i], image: nil, difValue: 0, deltaTime: 0)
+                        let similarObject = GridModel(uuidString: parentID, index: mainIndex, images: [imageObj])
+                        similarPhotosList.append(similarObject)
+                    }
+                }
+                else if (DataManager.shared.isAssetIdAlreadyScaned(for: assets[i].localIdentifier)) {
+                    print("\(i) -> in side if else")
+                }
+                else {
+                    print("\(i) -> in side else")
+                    let distance = PhotoKitManager.shared.compareImage(image1: image1, image2: image2)
+                    let deltaTime = assets[i-1].creationDate!.timeIntervalSince1970 - assets[i].creationDate!.timeIntervalSince1970
                     
+                    let widthDelta = abs(image1.size.width - image2.size.width)
+                    let heightDelta = abs(image1.size.height - image2.size.height)
+                    
+                    if ((distance < 0.50 && deltaTime < 15) && (widthDelta < 10 && heightDelta < 10)) {
+                        imageList.append(ImageModel(index:imageList.count, asset: assets[i], image: nil, difValue: distance, deltaTime: Float(deltaTime)))
+                    }
+                    else{
+                        if(imageList.count > 1){
+                            let similarImageAsset = GridModel(index: mainIndex, images: imageList)
+                            similarImageAsset.saveDataToCache()
+                            similarPhotosList.append(similarImageAsset)
+                            mainIndex += 1
+                        }
+                        else{
+                            for item in imageList {
+                                DataManager.shared.addToScanList(for: item.asset?.localIdentifier ?? "")
+                            }
+                        }
+                        
+                        imageList = []
+                        imageList.append(ImageModel(index:imageList.count, asset: assets[i], image: nil, difValue: distance, deltaTime: Float(deltaTime)))
+                        
+                    }
                 }
                 
                 if (i % 25 == 0) {
@@ -165,10 +194,9 @@ class PhotoKitManager : ObservableObject {
                         if let list = self?.similarPhotosList{
                             updateList(list,false)
                         }
-                        
                     }
-                    
                 }
+                    
                 
 //                print("Distance \(i) \(scanningProgress) \(distance) - \(widthDelta) - \(heightDelta) ")
             }
@@ -177,7 +205,6 @@ class PhotoKitManager : ObservableObject {
         let endTime = Date()
         isScaning = false
         let times = endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970
-        print("times \(times)")
         updateList(similarPhotosList,true)
         
     }
@@ -225,5 +252,37 @@ class PhotoKitManager : ObservableObject {
         deletedPhotoList.append(asset)
         DataManager.shared.deleteAssetId(assetID: asset.asset.localIdentifier)
     }
+    
+    func deleteAssetFromPhotos(assets : [PHAsset],completionHandler: ((Bool, (any Error)?) -> Void)? = nil) {
+        
+        PHPhotoLibrary.shared().performChanges({
+            PHAssetChangeRequest.deleteAssets(assets as NSArray)
+        }) { success, error in
+            if success {
+                print("Photo deleted successfully")
+            } else if let error = error {
+                print("Error deleting photo: \(error.localizedDescription)")
+            } else {
+                print("Failed to delete photo for unknown reasons.")
+            }
+            completionHandler?(success,error)
+        }
+    }
+    
+    func updateListAfterDeleteAsset(assets : [PHAsset]) -> [GridModel] {
+        var newSimilarList : [GridModel] = []
+        for similarObject in similarPhotosList {
+            var newAssetList : [ImageModel] = []
+            for assetObject in similarObject.images {
+                if (!assets.contains(assetObject.asset!)) {
+                    newAssetList.append(assetObject)
+                }
+            }
+            newSimilarList.append(GridModel(index: -1, images: newAssetList))
+        }
+        self.similarPhotosList = newSimilarList
+        return newSimilarList
+    }
+    
     
 }

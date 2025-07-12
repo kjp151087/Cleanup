@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TextButton: View {
     var action: () -> Void
-    @State var text : String
+    var text : String
     @Binding var isEnable : Bool
     var padding : EdgeInsets = .init(top: 8, leading: 8, bottom: 8, trailing: 8)
     var textColor : Color = .black

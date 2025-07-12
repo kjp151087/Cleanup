@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SimilarPhotoScreen: View {
     @StateObject var vm = SimilarPhotoScreenViewModel()
+    
     @Environment(\.router) var router
     
     
@@ -20,21 +21,11 @@ struct SimilarPhotoScreen: View {
                     VStack {
                         ImageCollectionCard(imageInfo: item) { innerIndex, selection in
                             print("check index \(listIndex), \(selection)")
-                            
-                            for i in vm.similarPhotos[listIndex].images {
-                                print("i1 -> \(i.isSelected)")
-                            }
-//
+
                             let updatedPhotos = vm.similarPhotos
                             updatedPhotos[listIndex].images[innerIndex].isSelected = selection
                             
                             vm.updateSimilarPhotos(updatedPhotos)
-
-                            for i in vm.similarPhotos[listIndex].images {
-                                print("i2 -> \(i.isSelected)")
-                            }
-                            
-                            
                         }
                         Divider()
                     }
@@ -43,8 +34,25 @@ struct SimilarPhotoScreen: View {
         }
     }
     
+    var header : some View {
+        VStack {
+            HStack {
+                TextButton(action: {
+                    router.dismissScreenStack()
+                }, text: "Back", isEnable: .constant(true))
+                Spacer()
+                if (vm.count > 0) {
+                    TextButton(action: {
+                        vm.deleteSelectedPhotos()
+                    }, text: "Delete \(vm.count)", isEnable: .constant(true))
+                }
+            }
+        }
+    }
+    
     var body: some View {
         VStack {
+            header
             scrollContent
         }
         .navigationBarBackButtonHidden()

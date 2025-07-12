@@ -27,6 +27,7 @@ struct HomeScreen: View {
                 }
                 
                 Button{
+                    print("Showing similar Photos Click")
                     router.showScreen(.push) { r in
                         SimilarPhotoScreen()
                     }

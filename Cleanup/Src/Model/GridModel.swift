@@ -24,6 +24,22 @@ struct GridModel: Identifiable {
 //            self.images[i].isSelected = i != 0
 //        }
     }
+    
+    init(uuidString : String, index: Int, images: [ImageModel]) {
+        self.id = UUID(uuidString: uuidString) ?? UUID()
+        self.images = images
+        self.index = index
+
+//        for i in 0..<self.images.count {
+//            self.images[i].isSelected = i != 0
+//        }
+    }
+    
+    func saveDataToCache() {
+        for item in images {
+            DataManager.shared.updateScanID(assetID: item.asset?.localIdentifier ?? "", parentID: self.id.uuidString)
+        }
+    }
 }
 
 

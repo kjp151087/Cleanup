@@ -23,8 +23,6 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = formatDate
 
-        let date = Date()
-
-        return dateFormatter.string(from: date)
+        return dateFormatter.string(from: self)
     }
 }

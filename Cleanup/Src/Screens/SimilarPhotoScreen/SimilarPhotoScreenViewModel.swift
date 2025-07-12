@@ -6,11 +6,12 @@
 //
 
 import Foundation
-
+import Photos
 
 class SimilarPhotoScreenViewModel : ObservableObject {
     
     @Published var similarPhotos: [GridModel] = []
+    @Published var count = 0
     
     func fetchPhotos() {
 //        print("fetchPhotos")
@@ -22,46 +23,45 @@ class SimilarPhotoScreenViewModel : ObservableObject {
                 }
                 
                 Utility.performAsync(delay: 2) {
-                    self.testingUpdate()
+                    
                 }
             }
         }
     }
     
-    func testingUpdate() {
-        
-        
-        
-//
-//        var test = similarPhotos
-//        similarPhotos[2].images[1].isSelected = false
-//        similarPhotos = [test.first!]
-//        
-//        var test : [GridModel] = []
-//        
-//        for obj in similarPhotos {
-//            var newObjList : [ImageModel] = []
-//            
-//            for ite in obj.images {
-//                var a = ite
-//                a.isSelected = false
-//                newObjList.append(a)
-//            }
-//            
-//            let obj = GridModel(index: 0, images: newObjList)
-//            test.append(obj)
-//        }
-//        
-//        similarPhotos = test
-        
-//        for item in similarPhotos[2].images {
-//            item.isSelected = false
-//        }
-        
+    func updateSimilarPhotos(_ photos: [GridModel]) {
+        var totalCount = 0
+        var count = photos.flatMap{$0.images}.filter{$0.isSelected}.count
+        for item in photos {
+            for image in item.images {
+                if image.isSelected {
+                    print("total count ", totalCount)
+                    totalCount += 1
+                }
+            }
+        }
+        self.count = totalCount
+        self.similarPhotos = photos
     }
     
-    func updateSimilarPhotos(_ photos: [GridModel]) {
-        self.similarPhotos = photos
+    func deleteSelectedPhotos() {
+        
+        let deleteAssets: [PHAsset] = similarPhotos
+            .flatMap { $0.images }
+            .filter { $0.isSelected }
+            .compactMap { $0.asset }
+
+        PhotoKitManager.shared.deleteAssetFromPhotos(assets: deleteAssets) { success, error in
+            if (success) {
+                DispatchQueue.main.async {
+                    self.similarPhotos = PhotoKitManager.shared.updateListAfterDeleteAsset(assets: deleteAssets)
+                    self.count = 0
+                }
+            }
+            else{
+                print("Error ", error)
+            }
+        }
     }
     
 }

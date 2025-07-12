@@ -10,6 +10,7 @@
 		F91EDB532CC40CF800C0102B /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91EDB522CC40CF800C0102B /* ImageModel.swift */; };
 		F91EDB552CC40D3800C0102B /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91EDB542CC40D3800C0102B /* GridModel.swift */; };
 		F92F71CB2CA842FB00185B39 /* ImageCollectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92F71CA2CA842FB00185B39 /* ImageCollectionCard.swift */; };
+		F9425F8B2E1BBD2000F4D1DA /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9425F8A2E1BBD2000F4D1DA /* AlertManager.swift */; };
 		F95FE6362CBFD52700BE8E4D /* PhotoFullScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */; };
 		F95FE6382CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */; };
 		F95FE63A2CBFD8AB00BE8E4D /* PhotoAssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6392CBFD8AB00BE8E4D /* PhotoAssetModel.swift */; };
@@ -58,6 +59,7 @@
 		F91EDB522CC40CF800C0102B /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		F91EDB542CC40D3800C0102B /* GridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridModel.swift; sourceTree = "<group>"; };
 		F92F71CA2CA842FB00185B39 /* ImageCollectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionCard.swift; sourceTree = "<group>"; };
+		F9425F8A2E1BBD2000F4D1DA /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullScreen.swift; sourceTree = "<group>"; };
 		F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullScreenViewModel.swift; sourceTree = "<group>"; };
 		F95FE6392CBFD8AB00BE8E4D /* PhotoAssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAssetModel.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			children = (
 				F9653CD92CF8B53C00A7435B /* Button */,
 				F9C72F632CA5BC9F006F58E6 /* AttributedText.swift */,
+				F9425F8A2E1BBD2000F4D1DA /* AlertManager.swift */,
 				F9C72F642CA5BC9F006F58E6 /* RootAppScreen.swift */,
 				F9C72F672CA5BC9F006F58E6 /* RootNavScreen.swift */,
 				F9C72F652CA5BC9F006F58E6 /* ProgressView.swift */,
@@ -447,6 +450,7 @@
 				F9C72F3F2CA5BC54006F58E6 /* ContentView.swift in Sources */,
 				F9C72FB62CA5BC9F006F58E6 /* BaseTextField.swift in Sources */,
 				F91EDB552CC40D3800C0102B /* GridModel.swift in Sources */,
+				F9425F8B2E1BBD2000F4D1DA /* AlertManager.swift in Sources */,
 				F9D9DC0B2CADA242006CA6C6 /* HomeScreenViewModel.swift in Sources */,
 				F99227F32CB83A6F0066D70C /* PieChartView.swift in Sources */,
 				F9C72FA02CA5BC9F006F58E6 /* EncodableExtension.swift in Sources */,
@@ -599,6 +603,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cleanup/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs permission to delete photos";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photos to show them in the app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -632,6 +637,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cleanup/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs permission to delete photos";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photos to show them in the app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
