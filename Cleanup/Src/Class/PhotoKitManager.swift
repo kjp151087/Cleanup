@@ -134,12 +134,8 @@ class PhotoKitManager : ObservableObject {
         for i in 1..<countLegnth {
             scanningProgress = Float(i) / Float(countLegnth)
             autoreleasepool {
-                 
-                let image1 = assets[i-1].getThumgImage() ?? UIImage(named: "test")!
-                let image2 = assets[i].getThumgImage() ?? UIImage(named: "test")!
                 
                 if let parentID = DataManager.shared.getParentId(for: assets[i].localIdentifier) {
-                    print("\(i) -> in side if")
                     var index = -1
                     for j in 0..<similarPhotosList.count {
                         if (similarPhotosList[j].id.uuidString == parentID) {
@@ -149,18 +145,22 @@ class PhotoKitManager : ObservableObject {
                     }
                     if (index != -1) {
                         similarPhotosList[index].images.append(ImageModel(index: similarPhotosList[index].images.count, asset: assets[i], image: nil, difValue: 0, deltaTime: 0))
+                        similarPhotosList[index].setDefaultSelection()
                     }
                     else{
                         let imageObj = ImageModel(index: 0, asset: assets[i], image: nil, difValue: 0, deltaTime: 0)
                         let similarObject = GridModel(uuidString: parentID, index: mainIndex, images: [imageObj])
                         similarPhotosList.append(similarObject)
+                        similarObject.setDefaultSelection()
                     }
                 }
                 else if (DataManager.shared.isAssetIdAlreadyScaned(for: assets[i].localIdentifier)) {
-                    print("\(i) -> in side if else")
+                    
                 }
                 else {
-                    print("\(i) -> in side else")
+                    
+                    let image1 = assets[i-1].getThumgImage() ?? UIImage(named: "test")!
+                    let image2 = assets[i].getThumgImage() ?? UIImage(named: "test")!
                     let distance = PhotoKitManager.shared.compareImage(image1: image1, image2: image2)
                     let deltaTime = assets[i-1].creationDate!.timeIntervalSince1970 - assets[i].creationDate!.timeIntervalSince1970
                     
@@ -177,16 +177,13 @@ class PhotoKitManager : ObservableObject {
                             similarPhotosList.append(similarImageAsset)
                             mainIndex += 1
                         }
-                        else{
-                            for item in imageList {
-                                DataManager.shared.addToScanList(for: item.asset?.localIdentifier ?? "")
-                            }
-                        }
                         
                         imageList = []
                         imageList.append(ImageModel(index:imageList.count, asset: assets[i], image: nil, difValue: distance, deltaTime: Float(deltaTime)))
                         
                     }
+                    
+                    DataManager.shared.addToScanList(for: assets[i].localIdentifier)
                 }
                 
                 if (i % 25 == 0) {

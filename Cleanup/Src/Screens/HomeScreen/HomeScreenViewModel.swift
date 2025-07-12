@@ -26,7 +26,6 @@ class HomeScreenViewModel : ObservableObject {
     
     @Published var chartData: [ChartInfo] = []
     
-    
     @Published var progress: Float = 0
     
     func requestPermission() {

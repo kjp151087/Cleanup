@@ -18,12 +18,16 @@ class DataManager {
     private let assetsIdKey = "AssetsIdKey"
     
     var deletedAssetIDAssetID : [String] = []
-    var parentsID : [String] = []
-    var scanedID : [String] = []
-    var assetIDParentID : [String] = []
+    var parentsIDList : [String] = []
+    var scanedIDList : [String] = []
+    var assetIDParentID : [String:String] = [:]
     
     private init() {
-        parentsID = UserDefaults.standard.getObject(key: parentsIdsKey) as? [String] ?? []
+        parentsIDList = UserDefaults.standard.getObject(key: parentsIdsKey) as? [String] ?? []
+        assetIDParentID = UserDefaults.standard.getObject(key: assetsIdKey) as? [String:String] ?? [:]
+        scanedIDList = UserDefaults.standard.getObject(key: scanIdsKey) as? [String] ?? []
+        
+        print("scanedIDList -> \(scanedIDList)")
     }
     
     func deletedAssetList() -> [String] {
@@ -47,54 +51,33 @@ class DataManager {
     }
     
     func updateScanID(assetID : String, parentID : String) {
-        var parentsList : [String] = []
-        if let list = UserDefaults.standard.getObject(key: parentsIdsKey) as? [String] {
-            parentsList = list
-        }
         
-        if(!parentsList.contains(parentID)) {
-            parentsList.append(parentID)
+        if(!parentsIDList.contains(parentID)) {
+            parentsIDList.append(parentID)
         }
-        UserDefaults.standard.setObject(obj: parentsList, key: parentsIdsKey)
+        UserDefaults.standard.setObject(obj: parentsIDList, key: parentsIdsKey)
         
-        if var objScanId = UserDefaults.standard.getObject(key: assetsIdKey) as? [String:String] {
-            objScanId[assetID] = parentID
-            UserDefaults.standard.setObject(obj: objScanId, key: assetsIdKey)
-        }
-        else{
-            let obj = [assetID:parentID]
-            UserDefaults.standard.setObject(obj: obj, key: assetsIdKey)
-        }
+        assetIDParentID[assetID] = parentID
+        UserDefaults.standard.setObject(obj: assetIDParentID, key: assetsIdKey)
+        
     }
     
     func getParentId(for assetID : String) -> String? {
-        if let objScanId = UserDefaults.standard.getObject(key: assetsIdKey) as? [String:String] {
-            return objScanId[assetID]
-        }
-        
-        return nil
+        return assetIDParentID[assetID]
     }
     
     func addToScanList(for assetID : String){
-        var scanList : [String] = []
-        if let list = UserDefaults.standard.getObject(key: parentsIdsKey) as? [String] {
-            scanList = list
+        if(!scanedIDList.contains(assetID)) {
+            scanedIDList.append(assetID)
+            UserDefaults.standard.setObject(obj: scanedIDList, key: scanIdsKey)
         }
         
-        if(!scanList.contains(assetID)) {
-            scanList.append(assetID)
-            UserDefaults.standard.setObject(obj: scanList, key: parentsIdsKey)
-        }
     }
-    
-    
-    func isAssetIdAlreadyScaned(for assetID : String) -> Bool{
-        if let list = UserDefaults.standard.getObject(key: parentsIdsKey) as? [String] {
-            if(!list.contains(assetID)) {
-                return true
-            }
-        }
         
+    func isAssetIdAlreadyScaned(for assetID : String) -> Bool{
+        if(scanedIDList.contains(assetID)) {
+            return true
+        }
         return false
     }
     
