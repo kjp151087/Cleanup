@@ -36,31 +36,25 @@ extension PHAsset {
     
     func assetSize() -> Float {
         
-            let resources = PHAssetResource.assetResources(for: self)
-            
-            guard let resource = resources.first,
-                  let unsignedInt64 = resource.value(forKey: "fileSize") as? CLong else {
-                      return 0
-                  }
-
-            let sizeOnDisk = Int64(bitPattern: UInt64(unsignedInt64))
-            return Float(sizeOnDisk)/1000.0/1000.0;
-            
-
-        /// Below code not working
-//        let imageManager = PHImageManager.default()
-//        let options = PHImageRequestOptions()
-//        options.isSynchronous = true
-//        options.deliveryMode = .highQualityFormat
-//        var bytes : Int = 0
-//        
-//        imageManager.requestImageData(for: self, options: options) { (data, _, _, _) in
-//            if let data = data {
-//                bytes =  data.count
-//            }
-//        }
-//        return Float(bytes) / 1000.0 / 1000.0
+        let resources = PHAssetResource.assetResources(for: self)
+        
+        guard let resource = resources.first,
+              let unsignedInt64 = resource.value(forKey: "fileSize") as? CLong else {
+            return 0
+        }
+        
+        let sizeOnDisk = Int64(bitPattern: UInt64(unsignedInt64))
+        return Float(sizeOnDisk)/1000.0/1000.0;
+        
     }
+    
+    func cachedAssetSize() -> Float {
+        if let size = DataManager.shared.memorySize(assetID: self.localIdentifier) {
+            return size
+        }
+        return self.assetSize()
+    }
+    
     
     func getImage(targetSize : CGSize = CGSize(width: 200, height: 200)) -> UIImage? {
         

@@ -16,18 +16,21 @@ class DataManager {
     private let parentsIdsKey = "ParentsIdsKey"
     private let scanIdsKey = "ScanIdsKey"
     private let assetsIdKey = "AssetsIdKey"
+    private let memorySizeStoreKey = "MemorySizeStoreKey"
     
     var deletedAssetIDAssetID : [String] = []
     var parentsIDList : [String] = []
     var scanedIDList : [String] = []
     var assetIDParentID : [String:String] = [:]
+    var assetIDMemorySize : [String:Float] = [:]
     
     private init() {
         parentsIDList = UserDefaults.standard.getObject(key: parentsIdsKey) as? [String] ?? []
         assetIDParentID = UserDefaults.standard.getObject(key: assetsIdKey) as? [String:String] ?? [:]
+        assetIDMemorySize = UserDefaults.standard.getObject(key: memorySizeStoreKey) as? [String:Float] ?? [:]
         scanedIDList = UserDefaults.standard.getObject(key: scanIdsKey) as? [String] ?? []
         
-        print("scanedIDList -> \(scanedIDList)")
+        print("assetIDMemorySize -> \(assetIDMemorySize)")
     }
     
     func deletedAssetList() -> [String] {
@@ -71,7 +74,6 @@ class DataManager {
             scanedIDList.append(assetID)
             UserDefaults.standard.setObject(obj: scanedIDList, key: scanIdsKey)
         }
-        
     }
         
     func isAssetIdAlreadyScaned(for assetID : String) -> Bool{
@@ -79,6 +81,15 @@ class DataManager {
             return true
         }
         return false
+    }
+    
+    func updateMemoryID(assetID : String, memorySize : Float){
+        assetIDMemorySize[assetID] = memorySize
+        UserDefaults.standard.setObject(obj: assetIDMemorySize, key: memorySizeStoreKey)
+    }
+    
+    func memorySize(assetID : String) -> Float?{
+        return assetIDMemorySize[assetID]
     }
     
 }

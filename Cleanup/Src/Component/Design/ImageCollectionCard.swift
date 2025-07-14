@@ -71,7 +71,7 @@ struct SimilarImageBox : View {
                         
                         Spacer()
                         VStack{
-                            Text("\(String(format: "%0.2f", asset.assetSize() ?? 0)) MB")
+                            Text("\(String(format: "%0.2f", asset.assetSize())) MB")
                                 .font(.subheadline)
                                 .foregroundStyle(.white)
                         }

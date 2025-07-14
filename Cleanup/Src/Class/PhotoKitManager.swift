@@ -184,6 +184,7 @@ class PhotoKitManager : ObservableObject {
                     }
                     
                     DataManager.shared.addToScanList(for: assets[i].localIdentifier)
+                    DataManager.shared.updateMemoryID(assetID: assets[i].localIdentifier, memorySize: assets[i].assetSize())
                 }
                 
                 if (i % 25 == 0) {

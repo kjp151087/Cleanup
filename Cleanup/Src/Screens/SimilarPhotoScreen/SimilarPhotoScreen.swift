@@ -20,8 +20,7 @@ struct SimilarPhotoScreen: View {
                 ForEach(Array(vm.similarPhotos.enumerated()), id: \.element.id) { listIndex, item in
                     VStack {
                         ImageCollectionCard(imageInfo: item) { innerIndex, selection in
-                            print("check index \(listIndex), \(selection)")
-
+                            
                             let updatedPhotos = vm.similarPhotos
                             updatedPhotos[listIndex].images[innerIndex].isSelected = selection
                             
@@ -42,9 +41,12 @@ struct SimilarPhotoScreen: View {
                 }, text: "Back", isEnable: .constant(true))
                 Spacer()
                 if (vm.count > 0) {
-                    TextButton(action: {
-                        vm.deleteSelectedPhotos()
-                    }, text: "Delete \(vm.count)", isEnable: .constant(true))
+                    VStack{
+                        TextButton(action: {
+                            vm.deleteSelectedPhotos()
+                        }, text: "Delete \(vm.count)", isEnable: .constant(true))
+                        Text("Total - \(vm.totalMemorySaved)")
+                    }
                 }
             }
         }
@@ -60,6 +62,7 @@ struct SimilarPhotoScreen: View {
         .onLoad {
             print("onload")
             vm.fetchPhotos()
+            
         }
     }
 }
