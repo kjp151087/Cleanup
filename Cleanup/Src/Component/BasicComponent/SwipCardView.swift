@@ -20,8 +20,6 @@ enum SwipDirection : Int {
 struct SwipCardView<Content: View>: View {
     
     let id: String
-    var actionToDelete: (String) -> Void
-    var actionToAdd:    (String) -> Void
     var swipingInProgress : (SwipDirection) -> Void
     var swipingCompleted : (SwipDirection) -> Void
     @ViewBuilder let content: () -> Content
@@ -34,15 +32,43 @@ struct SwipCardView<Content: View>: View {
     // MARK: – Body
     var body: some View {
         ZStack {
-            // Card chrome (stays inside the component)
             Rectangle()
                 .cornerRadius(4)
                 .foregroundStyle(colour.opacity(0.8))
-                .overlay(                                     // <- put the parent’s UI on top
+                .overlay(
                     content()
-                        .padding()                             // contents‑only padding
+                        .padding()
                 )
                 .shadow(radius: 4)
+            
+            VStack {
+                HStack {
+                    if (swipeDirection  == .right){
+                        Text("Keep")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.green.opacity(0.8))
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 4)
+                                .stroke(Color.green.opacity(0.8), lineWidth: 2)
+                            )
+                            
+                    }
+                    Spacer()
+                    if (swipeDirection  == .left){
+                        Text("Delete")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.red.opacity(0.8))
+                            .padding()
+                            .overlay(                                      // white border
+                                RoundedRectangle(cornerRadius: 4)
+                                .stroke(Color.red.opacity(0.8), lineWidth: 2)
+                            )
+                    }
+                }
+                .padding()
+                Spacer()
+            }
         }
         .offset(x: offset.width, y: offset.height * 0.2)
         .padding(10)
@@ -51,16 +77,32 @@ struct SwipCardView<Content: View>: View {
             DragGesture()
                 .onChanged { gesture in
                     offset = gesture.translation
-                    withAnimation { changeColour(for: offset.width) }
+                    swipeDirection = getCurrentDirection(width: offset.width)
+                    swipingInProgress(swipeDirection)
+                    withAnimation {
+                        changeColour(direction: swipeDirection)
+                    }
                 }
                 .onEnded { _ in
                     withAnimation {
                         handleSwipe(for: offset.width)
-                        changeColour(for: offset.width)
-                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            swipingCompleted(swipeDirection)
+                        }
                     }
                 }
         )
+    }
+    
+    private func getCurrentDirection(width: CGFloat) -> SwipDirection {
+        switch width {
+        case -500 ... -80:
+            return .left
+        case 80 ... 500:
+            return .right
+        default:
+            return .none
+        }
     }
     
     // MARK: – Helpers
@@ -68,35 +110,24 @@ struct SwipCardView<Content: View>: View {
         switch width {
         case -500 ... -80:
             offset.width = -500
-            actionToDelete(id)
-            swipingCompleted(.left)
         case 80 ... 500:
             offset.width = 500
-            actionToAdd(id)
-            swipingCompleted(.right)
         default:
             offset = .zero
-            swipingCompleted(.none)
         }
     }
     
-    private func changeColour(for width: CGFloat) {
-        switch width {
-        case -500 ... -80: do {
-            colour = .red
-            swipeDirection = .left
-            swipingInProgress(swipeDirection)
-        }
-        case 80 ... 500:   do {
-            colour = .green
-            swipeDirection = .right
-            swipingInProgress(swipeDirection)
-        }
-        default: do {
-            colour = .white
-            swipeDirection = .none
-            swipingInProgress(swipeDirection)
-        }
-        }
+    private func changeColour(direction : SwipDirection) {
+//        switch direction{
+//        case .left : do {
+//            colour = .red.opacity(0.3)
+//        }
+//        case .right:   do {
+//            colour = .green.opacity(0.3)
+//        }
+//        default: do {
+//            colour = .white
+//        }
+//        }
     }
 }

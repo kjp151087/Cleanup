@@ -19,6 +19,8 @@ struct SwipCardContainer : View {
     @State private var currentCardData : [String] = []
     @State private var currentPhotoData : [PhotoAssetModel] = []
     
+    @State var isDeleteTextVisible = false
+    @State var isKeepTextVisible = false
 
     func updateCardList() {
         var cardModels: [PhotoAssetModel] = []
@@ -38,14 +40,10 @@ struct SwipCardContainer : View {
             ForEach(currentPhotoData.reversed(), id: \.asset.localIdentifier) { photoObj in
                 SwipCardView(
                     id: photoObj.asset.localIdentifier,
-                    actionToDelete: { id in
-                        
-                    },
-                    actionToAdd: { id in
-                        
-                        
-                    },
                     swipingInProgress: { direction in
+                        
+                        isDeleteTextVisible = direction == .left
+                        isKeepTextVisible = direction == .right
                         
                     },
                     swipingCompleted: { direction in
@@ -62,14 +60,18 @@ struct SwipCardContainer : View {
                     VStack(spacing: 12) {
                         ZStack {
                             AssetImageView(asset: photoObj.asset, shouldLoadOrigin: true)
-                            VStack {
-                                HStack {
-                                    Text("Delete")
-                                    Spacer()
-                                    Text("Keep")
-                                }
-                                Spacer()
-                            }
+//                            VStack {
+//                                HStack {
+//                                    if (isDeleteTextVisible){
+//                                        Text("Delete")
+//                                    }
+//                                    Spacer()
+//                                    if (isKeepTextVisible) {
+//                                        Text("Keep")
+//                                    }
+//                                }
+//                                Spacer()
+//                            }
                                 
                         }
                     }
