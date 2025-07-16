@@ -17,6 +17,7 @@
 		F9653CDC2CF8B53C00A7435B /* BadgeCountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9653CDA2CF8B53C00A7435B /* BadgeCountButton.swift */; };
 		F9653CDD2CF8B53C00A7435B /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9653CDB2CF8B53C00A7435B /* TextButton.swift */; };
 		F9653CDF2CF8B63100A7435B /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9653CDE2CF8B63100A7435B /* CheckboxButton.swift */; };
+		F9746E062E26D71B0094A29A /* SwipCardContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9746E052E26D71B0094A29A /* SwipCardContainer.swift */; };
 		F99227F02CB8183F0066D70C /* AssetImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99227EF2CB8183F0066D70C /* AssetImageView.swift */; };
 		F99227F32CB83A6F0066D70C /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99227F22CB83A6F0066D70C /* PieChartView.swift */; };
 		F997465A2CB0270100D3C75D /* HomeScreenCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99746592CB0270100D3C75D /* HomeScreenCard.swift */; };
@@ -66,6 +67,7 @@
 		F9653CDA2CF8B53C00A7435B /* BadgeCountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeCountButton.swift; sourceTree = "<group>"; };
 		F9653CDB2CF8B53C00A7435B /* TextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		F9653CDE2CF8B63100A7435B /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		F9746E052E26D71B0094A29A /* SwipCardContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipCardContainer.swift; sourceTree = "<group>"; };
 		F99227EF2CB8183F0066D70C /* AssetImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetImageView.swift; sourceTree = "<group>"; };
 		F99227F22CB83A6F0066D70C /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		F99746592CB0270100D3C75D /* HomeScreenCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCard.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				F9C72F6A2CA5BC9F006F58E6 /* CustomAlertView.swift */,
 				F9C72F6B2CA5BC9F006F58E6 /* BaseTextField.swift */,
 				F9C72F6D2CA5BC9F006F58E6 /* SeparatorLine.swift */,
+				F9746E052E26D71B0094A29A /* SwipCardContainer.swift */,
 			);
 			path = BasicComponent;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				F92F71CB2CA842FB00185B39 /* ImageCollectionCard.swift in Sources */,
 				F9C72FA22CA5BC9F006F58E6 /* CornerExtension.swift in Sources */,
 				F9D9DC102CADA280006CA6C6 /* SimilarPhotoScreenViewModel.swift in Sources */,
+				F9746E062E26D71B0094A29A /* SwipCardContainer.swift in Sources */,
 				F9C72FB52CA5BC9F006F58E6 /* CustomAlertView.swift in Sources */,
 				F997465A2CB0270100D3C75D /* HomeScreenCard.swift in Sources */,
 				F9C72FD22CA5BC9F006F58E6 /* Utility.swift in Sources */,
