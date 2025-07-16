@@ -14,6 +14,7 @@
 		F95FE6362CBFD52700BE8E4D /* PhotoFullScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */; };
 		F95FE6382CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */; };
 		F95FE63A2CBFD8AB00BE8E4D /* PhotoAssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6392CBFD8AB00BE8E4D /* PhotoAssetModel.swift */; };
+		F960FE442E28180500DB55AA /* SwipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F960FE432E28180500DB55AA /* SwipCardView.swift */; };
 		F9653CDC2CF8B53C00A7435B /* BadgeCountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9653CDA2CF8B53C00A7435B /* BadgeCountButton.swift */; };
 		F9653CDD2CF8B53C00A7435B /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9653CDB2CF8B53C00A7435B /* TextButton.swift */; };
 		F9653CDF2CF8B63100A7435B /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9653CDE2CF8B63100A7435B /* CheckboxButton.swift */; };
@@ -64,6 +65,7 @@
 		F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullScreen.swift; sourceTree = "<group>"; };
 		F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullScreenViewModel.swift; sourceTree = "<group>"; };
 		F95FE6392CBFD8AB00BE8E4D /* PhotoAssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAssetModel.swift; sourceTree = "<group>"; };
+		F960FE432E28180500DB55AA /* SwipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipCardView.swift; sourceTree = "<group>"; };
 		F9653CDA2CF8B53C00A7435B /* BadgeCountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeCountButton.swift; sourceTree = "<group>"; };
 		F9653CDB2CF8B53C00A7435B /* TextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		F9653CDE2CF8B63100A7435B /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				F9C72F6B2CA5BC9F006F58E6 /* BaseTextField.swift */,
 				F9C72F6D2CA5BC9F006F58E6 /* SeparatorLine.swift */,
 				F9746E052E26D71B0094A29A /* SwipCardContainer.swift */,
+				F960FE432E28180500DB55AA /* SwipCardView.swift */,
 			);
 			path = BasicComponent;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				F9C72FB62CA5BC9F006F58E6 /* BaseTextField.swift in Sources */,
 				F91EDB552CC40D3800C0102B /* GridModel.swift in Sources */,
 				F9425F8B2E1BBD2000F4D1DA /* AlertManager.swift in Sources */,
+				F960FE442E28180500DB55AA /* SwipCardView.swift in Sources */,
 				F9D9DC0B2CADA242006CA6C6 /* HomeScreenViewModel.swift in Sources */,
 				F99227F32CB83A6F0066D70C /* PieChartView.swift in Sources */,
 				F9C72FA02CA5BC9F006F58E6 /* EncodableExtension.swift in Sources */,

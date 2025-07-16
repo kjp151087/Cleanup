@@ -49,7 +49,6 @@ class DataManager {
         oldList.append(contentsOf: list)
         
         let uniqueList = Array(Set(oldList))
-        print("uniqueList \(uniqueList)")
         UserDefaults.standard.setObject(obj: uniqueList, key: deletedAssetIdsKey)
     }
     
