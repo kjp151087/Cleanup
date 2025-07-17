@@ -54,7 +54,7 @@ struct SimilarPhotoScreen: View {
     
     var body: some View {
         VStack {
-            header
+            HeaderView(title: "Similar Photos")
             scrollContent
         }
         .navigationBarBackButtonHidden()

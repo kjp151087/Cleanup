@@ -11,57 +11,12 @@ struct PhotoFullScreen: View {
     
     var body: some View {
         ZStack {
-            
-            SwipCardContainer(photos: vm.photos, currentIndex: vm.index)
-                
-            
-            
-            /// Image view container
-//            VStack{
-//                VStack{
-//                    Image(uiImage: vm.currentImage ?? UIImage(named: "test")!)
-//                        .resizable()
-//                        .scaledToFit()
-//                        .padding()
-//                        .cornerRadius(10, corners: UIRectCorner())
-//                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                }
-//                .background(.blue.opacity(0.2))
-//                .padding(.vertical,1)
-//            }
-//            .background(.red.opacity(0.2))
-//            
-//            VStack{
-//                
-//                HStack{
-//                    Button {
-//                        PhotoKitManager.shared.deleteAsset(asset: vm.getCurrentIndexAsset())
-//                        vm.updateToNextIndex()
-//                    } label: {
-//                        VStack{
-//                            Spacer()
-//                            Text("  DELETE   ")
-//                        }
-//                    }
-//                    .frame(maxHeight: .infinity)
-//                    .background(.red.opacity(0.1))
-//                    
-//                    Spacer()
-//                    
-//                    Button {
-//                        vm.updateToNextIndex()
-//                    } label: {
-//                        VStack{
-//                            Spacer()
-//                            Text("   KEEP    ")
-//                        }
-//                    }
-//                    .frame(maxHeight: .infinity)
-//                    .background(.red.opacity(0.1))
-//                }
-//                .frame(maxHeight: .infinity)
-//            }
+            VStack{
+                HeaderView(title: "Photos")
+                SwipCardContainer(photos: vm.photos, currentIndex: vm.index)
+            }
         }
+        .navigationBarBackButtonHidden()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onLoad {
             

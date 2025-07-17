@@ -21,6 +21,7 @@ struct PhotoScreen: View {
         VStack{
             GeometryReader { geometry in
                 VStack {
+                    HeaderView(title: "Photos") 
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 10) { // Vertical spacing between rows
                             ForEach(vm.photos.indices, id: \.self) { index in
@@ -45,6 +46,7 @@ struct PhotoScreen: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 

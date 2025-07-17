@@ -118,16 +118,5 @@ struct SwipCardView<Content: View>: View {
     }
     
     private func changeColour(direction : SwipDirection) {
-//        switch direction{
-//        case .left : do {
-//            colour = .red.opacity(0.3)
-//        }
-//        case .right:   do {
-//            colour = .green.opacity(0.3)
-//        }
-//        default: do {
-//            colour = .white
-//        }
-//        }
     }
 }

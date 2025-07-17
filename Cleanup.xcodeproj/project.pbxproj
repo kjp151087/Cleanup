@@ -15,6 +15,7 @@
 		F95FE6382CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */; };
 		F95FE63A2CBFD8AB00BE8E4D /* PhotoAssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6392CBFD8AB00BE8E4D /* PhotoAssetModel.swift */; };
 		F960FE442E28180500DB55AA /* SwipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F960FE432E28180500DB55AA /* SwipCardView.swift */; };
+		F960FE462E28CF7400DB55AA /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F960FE452E28CF7400DB55AA /* HeaderView.swift */; };
 		F9653CDC2CF8B53C00A7435B /* BadgeCountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9653CDA2CF8B53C00A7435B /* BadgeCountButton.swift */; };
 		F9653CDD2CF8B53C00A7435B /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9653CDB2CF8B53C00A7435B /* TextButton.swift */; };
 		F9653CDF2CF8B63100A7435B /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9653CDE2CF8B63100A7435B /* CheckboxButton.swift */; };
@@ -66,6 +67,7 @@
 		F95FE6372CBFD53500BE8E4D /* PhotoFullScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullScreenViewModel.swift; sourceTree = "<group>"; };
 		F95FE6392CBFD8AB00BE8E4D /* PhotoAssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAssetModel.swift; sourceTree = "<group>"; };
 		F960FE432E28180500DB55AA /* SwipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipCardView.swift; sourceTree = "<group>"; };
+		F960FE452E28CF7400DB55AA /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F9653CDA2CF8B53C00A7435B /* BadgeCountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeCountButton.swift; sourceTree = "<group>"; };
 		F9653CDB2CF8B53C00A7435B /* TextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		F9653CDE2CF8B63100A7435B /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				F92F71CA2CA842FB00185B39 /* ImageCollectionCard.swift */,
 				F99746592CB0270100D3C75D /* HomeScreenCard.swift */,
 				F99227EF2CB8183F0066D70C /* AssetImageView.swift */,
+				F960FE452E28CF7400DB55AA /* HeaderView.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				F99B084A2CBC2FD7001A79DD /* PhotoScreen.swift in Sources */,
 				F9BB6F182DFF3753007BF42E /* ImageFullScreen.swift in Sources */,
 				F9C72FB82CA5BC9F006F58E6 /* SeparatorLine.swift in Sources */,
+				F960FE462E28CF7400DB55AA /* HeaderView.swift in Sources */,
 				F99227F02CB8183F0066D70C /* AssetImageView.swift in Sources */,
 				F9D9DC0E2CADA273006CA6C6 /* SimilarPhotoScreen.swift in Sources */,
 				F9653CDC2CF8B53C00A7435B /* BadgeCountButton.swift in Sources */,

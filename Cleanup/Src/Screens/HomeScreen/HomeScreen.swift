@@ -48,8 +48,16 @@ struct HomeScreen: View {
                     } label: {
                         HomeScreenCard(cardTitle: "Photos",lists: vm.photos)
                     }
-
-                    HomeScreenCard(cardTitle: "Videos",lists: vm.videos)
+                    
+                    Button {
+                        router.showScreen(.push) { r in
+                            PhotoScreen(assetList: vm.videos)
+                        }
+                    } label: {
+                        HomeScreenCard(cardTitle: "Videos",lists: vm.videos)
+                    }
+                    
+                    
                     HomeScreenCard(cardTitle: "Live Photos",lists: vm.livePhotos)
                     HomeScreenCard(cardTitle: "Screen Shots",lists: vm.screenshots)
                     
