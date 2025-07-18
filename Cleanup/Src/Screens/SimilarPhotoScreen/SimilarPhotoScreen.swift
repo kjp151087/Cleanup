@@ -54,7 +54,24 @@ struct SimilarPhotoScreen: View {
     
     var body: some View {
         VStack {
-            HeaderView(title: "Similar Photos")
+            HeaderView(title: "Similar Photos") {
+                if (vm.count > 0) {
+                    Button {
+                        
+                    } label: {
+                        VStack {
+                            Text("Delete")
+                                .foregroundColor(.black)
+                            Text("\(vm.count)")
+                                .foregroundColor(.black)
+                        }
+                        .frame(width: 120)
+                    }
+                }
+                else{
+                    EmptyView()
+                }
+            }
             scrollContent
         }
         .navigationBarBackButtonHidden()

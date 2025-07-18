@@ -63,7 +63,7 @@ class HomeScreenViewModel : ObservableObject {
         }
         
         Utility.performAsync(delay: 1) { [weak self] in
-//            self?.countSizeOnDisk()
+            self?.countSizeOnDisk()
         }
     }
     
@@ -106,12 +106,15 @@ class HomeScreenViewModel : ObservableObject {
                 self.chartData = data
             }
 //
-//            let data = [
-//                ChartInfo(value: photosSize, color: .blue, text: "Photos\n\(photosSize) MB"),
-//                ChartInfo(value: videosSize, color: .green, text: "Videos"),
-//                ChartInfo(value: livePhotoSize, color: .orange, text: "Live Photos"),
-//                ChartInfo(value: screenShotSize, color: .purple, text: "Screen Shots"),
-//            ]
+//            DispatchQueue.main.async {
+//                let data = [
+//                    ChartInfo(value: photosSize, color: .blue, text: "Photos\n\(photosSize) MB"),
+//                    ChartInfo(value: videosSize, color: .green, text: "Videos"),
+//                    ChartInfo(value: livePhotoSize, color: .orange, text: "Live Photos"),
+//                    ChartInfo(value: screenShotSize, color: .purple, text: "Screen Shots"),
+//                ]
+//                self.chartData = data
+//            }
             
         }
         

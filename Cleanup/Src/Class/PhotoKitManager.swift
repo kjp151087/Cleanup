@@ -109,7 +109,7 @@ class PhotoKitManager : ObservableObject {
     
     func totalSizeOnDisk(assets : [PhotoAssetModel]) -> Float{
         return assets.reduce(0) { result, item in
-            result + item.asset.assetSize()
+            result + item.asset.cachedAssetSize()
        }
     }
 
