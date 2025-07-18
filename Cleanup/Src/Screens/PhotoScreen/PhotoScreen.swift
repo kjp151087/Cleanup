@@ -7,8 +7,8 @@ struct PhotoScreen: View {
     @StateObject var vm: PhotoScreenViewModel
     @Environment(\.router) var router
     
-    init(assetList : [PhotoAssetModel]? = nil)  {
-        _vm = StateObject(wrappedValue: PhotoScreenViewModel(assetList: assetList ?? []))
+    init(assetList : [PhotoAssetModel]? = nil, title : String? = nil)  {
+        _vm = StateObject(wrappedValue: PhotoScreenViewModel(assetList: assetList ?? [], title : title ?? ""))
     }
 
     let columns = [
@@ -21,7 +21,7 @@ struct PhotoScreen: View {
         VStack{
             GeometryReader { geometry in
                 VStack {
-                    HeaderView(title: "Photos") 
+                    HeaderView(title: vm.title) 
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 10) { // Vertical spacing between rows
                             ForEach(vm.photos.indices, id: \.self) { index in

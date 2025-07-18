@@ -12,7 +12,7 @@ struct SwipCardContainer : View {
     
     var data : [String] = []
     
-    var maxCard = 10
+    var maxCard = 4
 
     @State var photos : [PhotoAssetModel] = []
     @State var currentIndex = 0
@@ -28,7 +28,9 @@ struct SwipCardContainer : View {
             cardModels.append(photos[i])
         }
         withAnimation {
-            currentPhotoData = cardModels
+            
+            currentPhotoData = cardModels.reversed()
+            
         }
         
     }
@@ -37,7 +39,8 @@ struct SwipCardContainer : View {
         
         ZStack {
             
-            ForEach(currentPhotoData.reversed(), id: \.asset.localIdentifier) { photoObj in
+            ForEach(Array(currentPhotoData.enumerated()), id: \.element.asset.localIdentifier) { index, photoObj in
+
                 SwipCardView(
                     id: photoObj.asset.localIdentifier,
                     swipingInProgress: { direction in
@@ -59,20 +62,12 @@ struct SwipCardContainer : View {
                 ) {
                     VStack(spacing: 12) {
                         ZStack {
-                            AssetImageView(asset: photoObj.asset, shouldLoadOrigin: true)
-//                            VStack {
-//                                HStack {
-//                                    if (isDeleteTextVisible){
-//                                        Text("Delete")
-//                                    }
-//                                    Spacer()
-//                                    if (isKeepTextVisible) {
-//                                        Text("Keep")
-//                                    }
-//                                }
-//                                Spacer()
-//                            }
-                                
+                            if (photoObj.asset.mediaType == .video && index == (currentPhotoData.count - 1)) {
+                                AssetVideoView(asset: photoObj.asset, shouldLoadOrigin: true)
+                            }
+                            else {
+                                AssetImageView(asset: photoObj.asset, shouldLoadOrigin: true)
+                            }
                         }
                     }
                 }

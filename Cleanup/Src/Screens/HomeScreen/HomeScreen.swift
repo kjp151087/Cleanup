@@ -43,7 +43,7 @@ struct HomeScreen: View {
                 VStack{
                     Button {
                         router.showScreen(.push) { r in
-                            PhotoScreen(assetList: vm.photos)
+                            PhotoScreen(assetList: vm.photos, title: "Photos")
                         }
                     } label: {
                         HomeScreenCard(cardTitle: "Photos",lists: vm.photos)
@@ -51,7 +51,7 @@ struct HomeScreen: View {
                     
                     Button {
                         router.showScreen(.push) { r in
-                            PhotoScreen(assetList: vm.videos)
+                            PhotoScreen(assetList: vm.videos, title: "Videos")
                         }
                     } label: {
                         HomeScreenCard(cardTitle: "Videos",lists: vm.videos)

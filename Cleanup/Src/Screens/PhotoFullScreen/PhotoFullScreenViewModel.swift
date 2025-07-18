@@ -13,20 +13,14 @@ class PhotoFullScreenViewModel : ObservableObject {
     
     @Published var photos: [PhotoAssetModel] = []
     @Published var currentImage: UIImage?
+    @Published var title: String?
     var index : Int
     
-//    init(index : Int) {
-//        self.photos = PhotoKitManager.shared.fetchAsset(for: .image)
-//        self.index = index
-//        self.currentImage = photos[index].getLargeImage()
-//    }
-    
-    init(index : Int, assetList : [PhotoAssetModel]?) {
+    init(index : Int, assetList : [PhotoAssetModel]?, title : String?) {
         self.photos = assetList ?? []
         self.index = index
+        self.title = title
         
-        print("self.photos \(self.photos.count)")
-        print("index \(index)")
         self.currentImage = photos[index].asset.getLargeImage()
     }
     

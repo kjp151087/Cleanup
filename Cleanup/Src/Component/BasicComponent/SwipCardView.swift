@@ -37,7 +37,7 @@ struct SwipCardView<Content: View>: View {
                 .foregroundStyle(colour.opacity(0.8))
                 .overlay(
                     content()
-                        .padding()
+                        
                 )
                 .shadow(radius: 4)
             
@@ -71,7 +71,7 @@ struct SwipCardView<Content: View>: View {
             }
         }
         .offset(x: offset.width, y: offset.height * 0.2)
-        .padding(10)
+        .padding(8)
         .rotationEffect(.degrees(Double(offset.width / 80)))
         .gesture(
             DragGesture()

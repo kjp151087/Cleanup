@@ -5,14 +5,14 @@ struct PhotoFullScreen: View {
     
     @StateObject var vm: PhotoFullScreenViewModel
     
-    init(currentIndex: Int, assetList : [PhotoAssetModel]? = nil) {
-        _vm = StateObject(wrappedValue: PhotoFullScreenViewModel(index: currentIndex, assetList: assetList))
+    init(currentIndex: Int, assetList : [PhotoAssetModel]? = nil, title : String? = nil) {
+        _vm = StateObject(wrappedValue: PhotoFullScreenViewModel(index: currentIndex, assetList: assetList, title: title))
     }
     
     var body: some View {
         ZStack {
             VStack{
-                HeaderView(title: "Photos")
+                HeaderView(title: vm.title ?? "")
                 SwipCardContainer(photos: vm.photos, currentIndex: vm.index)
             }
         }

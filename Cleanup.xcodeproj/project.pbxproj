@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F91EDB532CC40CF800C0102B /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91EDB522CC40CF800C0102B /* ImageModel.swift */; };
 		F91EDB552CC40D3800C0102B /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91EDB542CC40D3800C0102B /* GridModel.swift */; };
+		F92EF7A92E2925A600FAFC09 /* AssetVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EF7A82E2925A600FAFC09 /* AssetVideoView.swift */; };
+		F92EF7AB2E292B6800FAFC09 /* SystemImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EF7AA2E292B5B00FAFC09 /* SystemImageButton.swift */; };
 		F92F71CB2CA842FB00185B39 /* ImageCollectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92F71CA2CA842FB00185B39 /* ImageCollectionCard.swift */; };
 		F9425F8B2E1BBD2000F4D1DA /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9425F8A2E1BBD2000F4D1DA /* AlertManager.swift */; };
 		F95FE6362CBFD52700BE8E4D /* PhotoFullScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */; };
@@ -50,6 +52,7 @@
 		F9C72FD22CA5BC9F006F58E6 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F922CA5BC9F006F58E6 /* Utility.swift */; };
 		F9C72FD32CA5BC9F006F58E6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72F932CA5BC9F006F58E6 /* Color.swift */; };
 		F9C72FDF2CA5CBD1006F58E6 /* PhotoKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C72FDE2CA5CBD1006F58E6 /* PhotoKitManager.swift */; };
+		F9C9D44E2E290BB100C74148 /* ImageDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C9D44D2E290BB100C74148 /* ImageDetailView.swift */; };
 		F9D08F2E2CCBE46E00FCB20A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D08F2D2CCBE46E00FCB20A /* DataManager.swift */; };
 		F9D9DC0A2CADA242006CA6C6 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9DC082CADA242006CA6C6 /* HomeScreen.swift */; };
 		F9D9DC0B2CADA242006CA6C6 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9DC092CADA242006CA6C6 /* HomeScreenViewModel.swift */; };
@@ -61,6 +64,8 @@
 /* Begin PBXFileReference section */
 		F91EDB522CC40CF800C0102B /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		F91EDB542CC40D3800C0102B /* GridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridModel.swift; sourceTree = "<group>"; };
+		F92EF7A82E2925A600FAFC09 /* AssetVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetVideoView.swift; sourceTree = "<group>"; };
+		F92EF7AA2E292B5B00FAFC09 /* SystemImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImageButton.swift; sourceTree = "<group>"; };
 		F92F71CA2CA842FB00185B39 /* ImageCollectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionCard.swift; sourceTree = "<group>"; };
 		F9425F8A2E1BBD2000F4D1DA /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		F95FE6352CBFD52700BE8E4D /* PhotoFullScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullScreen.swift; sourceTree = "<group>"; };
@@ -103,6 +108,7 @@
 		F9C72F932CA5BC9F006F58E6 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F9C72FDD2CA5CB56006F58E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F9C72FDE2CA5CBD1006F58E6 /* PhotoKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoKitManager.swift; sourceTree = "<group>"; };
+		F9C9D44D2E290BB100C74148 /* ImageDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailView.swift; sourceTree = "<group>"; };
 		F9D08F2D2CCBE46E00FCB20A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F9D9DC082CADA242006CA6C6 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		F9D9DC092CADA242006CA6C6 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 				F9653CDA2CF8B53C00A7435B /* BadgeCountButton.swift */,
 				F9653CDB2CF8B53C00A7435B /* TextButton.swift */,
 				F9653CDE2CF8B63100A7435B /* CheckboxButton.swift */,
+				F92EF7AA2E292B5B00FAFC09 /* SystemImageButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -264,6 +271,8 @@
 				F92F71CA2CA842FB00185B39 /* ImageCollectionCard.swift */,
 				F99746592CB0270100D3C75D /* HomeScreenCard.swift */,
 				F99227EF2CB8183F0066D70C /* AssetImageView.swift */,
+				F92EF7A82E2925A600FAFC09 /* AssetVideoView.swift */,
+				F9C9D44D2E290BB100C74148 /* ImageDetailView.swift */,
 				F960FE452E28CF7400DB55AA /* HeaderView.swift */,
 			);
 			path = Design;
@@ -434,11 +443,13 @@
 				F9DA65522CA7CD5D00D402D0 /* PHAssetExtension.swift in Sources */,
 				F9D08F2E2CCBE46E00FCB20A /* DataManager.swift in Sources */,
 				F9C72FDF2CA5CBD1006F58E6 /* PhotoKitManager.swift in Sources */,
+				F92EF7AB2E292B6800FAFC09 /* SystemImageButton.swift in Sources */,
 				F92F71CB2CA842FB00185B39 /* ImageCollectionCard.swift in Sources */,
 				F9C72FA22CA5BC9F006F58E6 /* CornerExtension.swift in Sources */,
 				F9D9DC102CADA280006CA6C6 /* SimilarPhotoScreenViewModel.swift in Sources */,
 				F9746E062E26D71B0094A29A /* SwipCardContainer.swift in Sources */,
 				F9C72FB52CA5BC9F006F58E6 /* CustomAlertView.swift in Sources */,
+				F9C9D44E2E290BB100C74148 /* ImageDetailView.swift in Sources */,
 				F997465A2CB0270100D3C75D /* HomeScreenCard.swift in Sources */,
 				F9C72FD22CA5BC9F006F58E6 /* Utility.swift in Sources */,
 				F9D9DC0A2CADA242006CA6C6 /* HomeScreen.swift in Sources */,
@@ -447,6 +458,7 @@
 				F9C72FAF2CA5BC9F006F58E6 /* RootAppScreen.swift in Sources */,
 				F95FE6362CBFD52700BE8E4D /* PhotoFullScreen.swift in Sources */,
 				F9C72FB32CA5BC9F006F58E6 /* ToastView.swift in Sources */,
+				F92EF7A92E2925A600FAFC09 /* AssetVideoView.swift in Sources */,
 				F9C72FD12CA5BC9F006F58E6 /* AppConstant.swift in Sources */,
 				F9C72FAE2CA5BC9F006F58E6 /* AttributedText.swift in Sources */,
 				F99B084A2CBC2FD7001A79DD /* PhotoScreen.swift in Sources */,
